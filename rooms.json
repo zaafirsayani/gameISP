@@ -1,0 +1,25 @@
+{
+    "entrance": {
+      "name": "Entrance Hall",
+      "description": "You are in a grand entrance hall. A door leads north.",
+      "exits": {
+        "north": "library"
+      },
+      "items": [
+        {
+          "id": "key1",
+          "name": "Key",
+          "description": "A small rusty key."
+        }
+      ]
+    },
+    "library": {
+      "name": "Library",
+      "description": "Books line the walls. It's quiet.",
+      "exits": {
+        "south": "entrance"
+      },
+      "items": []
+    }
+  }
+  
