@@ -15,15 +15,16 @@ public class Game {
 
     public void start() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Welcome to the Text Adventure Game!");
+        System.out.println("Welcome to the world of Pokemon!");
         Room currentRoom = rooms.get(player.getCurrentRoomId());
         System.out.println(currentRoom.getLongDescription());
 
         while (true) {
-            
             System.out.print("> ");
             String input = scanner.nextLine();
             commandParser.parse(input, player, rooms);
         }
+
+        
     }
 }

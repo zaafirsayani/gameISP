@@ -1,25 +1,29 @@
 {
     "entrance": {
-      "name": "Entrance Hall",
-      "description": "You are in a grand entrance hall. A door leads north.",
+      "name": "Pallet Town",
+      "description": "Your name is Ash. You are in a small town: Pallet Town, the first stop for all aspiring Pokemon trainers in the Kanto region.", 
+      "dialogue": "You can go north to Professor Oak's lab.",
       "exits": {
-        "north": "library"
+        "north": "pol"
+
+      },
+      "items": []
+
+    },
+    "pol": {
+      "name": "Professor Oak's Lab",
+      "description": "The lab is quiet and filled with research equpiment. Professor Oak sits at his desk, seemingly awaiting your arrival.",
+      "dialogue":  "Hello Ash! I see you are ready to start your journey. I've been awaiting a new trainer for a very long time. I believe you are ready to choose your first Pokemon. You can choose between Bulbasaur, Charmander, or Squirtle.",
+      "exits":{
+        "south": "entrance"
       },
       "items": [
         {
-          "id": "key1",
-          "name": "Key",
-          "description": "A small rusty key."
+          "id": "p1",
+          "name": "Pokeball",
+          "description": "A red and white standard Pokeball."
         }
       ]
-    },
-    "library": {
-      "name": "Library",
-      "description": "Books line the walls. It's quiet.",
-      "exits": {
-        "south": "entrance"
-      },
-      "items": []
     }
   }
   
