@@ -15,6 +15,7 @@ public class RoomLoader {
 
                 String name = roomData.get("name").getAsString();
                 String description = roomData.get("description").getAsString();
+                String dialogue = roomData.get("dialogue").getAsString();
 
                 Map<String, String> exits = new HashMap<>();
                 JsonObject exitsJson = roomData.getAsJsonObject("exits");
@@ -32,7 +33,7 @@ public class RoomLoader {
                     items.add(new Pokemon(itemId, itemName, itemDescription));
                 }
 
-                Room room = new Room(roomId, name, description, exits, items);
+                Room room = new Room(roomId, name, description, exits, items, dialogue);
                 rooms.put(roomId, room);
             }
         } catch (Exception e) {

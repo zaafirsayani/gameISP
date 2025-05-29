@@ -4,7 +4,7 @@ public class CommandParser {
     public void parse(String input, Player player, Map<String, Room> rooms) {
         String[] words = input.trim().toLowerCase().split("\\s+");
         if (words.length == 0) {
-            System.out.println("Please enter a command.");
+            System.out.println("Sorry, what was that?");
             return;
         }
 
@@ -29,11 +29,11 @@ public class CommandParser {
                     }
                 }
                 break;
-            case "look":
+            case "look", "l", "where":
                 Room currentRoom = rooms.get(player.getCurrentRoomId());
                 System.out.println(currentRoom.getLongDescription());
                 break;
-            case "inventory":
+            case "inventory", "i", "inv":
                 if (player.getInventory().isEmpty()) {
                     System.out.println("Your inventory is empty.");
                 } else {
@@ -43,7 +43,7 @@ public class CommandParser {
                     }
                 }
                 break;
-            case "take":
+            case "take", "grab", "pick":
                 if (words.length < 2) {
                     System.out.println("Take what?");
                 } else {
@@ -87,11 +87,20 @@ public class CommandParser {
                     }
                 }
                 break;
-            case "help":
-                System.out.println("Available commands: go [direction], look, take [item], drop [item], inventory, help");
+            case "talk", "speak":
+                currentRoom = rooms.get(player.getCurrentRoomId());
+                String dialogue = currentRoom.getDialogue();
+                if (dialogue != null && !dialogue.isEmpty()) {
+                    System.out.println(dialogue);
+                } else {
+                    System.out.println("There's no one to talk to here.");
+                }
+                break;
+            case "help", "help me", "commands", "what can i do", "what do i say", "huh":
+                System.out.println("Available commands: go [direction], look, take [item], drop [item], inventory, help, talk");
                 break;
             default:
-                System.out.println("I don't understand that command.");
+                System.out.println("Sorry, I don't understand that.");
                 break;
         }
     }
