@@ -3,11 +3,11 @@ import java.util.List;
 
 public class Player {
     private String currentRoomId;
-    private List<Item> inventory;
+    private List<Pokemon> pokeparty;
 
     public Player(String startingRoomId) {
         this.currentRoomId = startingRoomId;
-        this.inventory = new ArrayList<>();
+        this.pokeparty = new ArrayList<>();
     }
 
     public String getCurrentRoomId() {
@@ -18,15 +18,15 @@ public class Player {
         this.currentRoomId = roomId;
     }
 
-    public void addItem(Item item) {
-        inventory.add(item);
+    public void addItem(Pokemon item) {
+        pokeparty.add(item);
     }
 
-    public void removeItem(Item item) {
-        inventory.remove(item);
+    public void removeItem(Pokemon item) {
+        pokeparty.remove(item);
     }
 
-    public List<Item> getInventory() {
-        return inventory;
+    public List<Pokemon> getInventory() {
+        return pokeparty;
     }
 }

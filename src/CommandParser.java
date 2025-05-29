@@ -61,7 +61,7 @@ public class CommandParser {
                         player.addItem(itemToTake);
                         System.out.println("You take the " + itemToTake.getName() + ".");
                     } else {
-                        System.out.println("There is no " + itemName + " here.");
+                        System.out.println("You cannot take a(n) " + itemName + " .");
                     }
                 }
                 break;

@@ -22,14 +22,14 @@ public class RoomLoader {
                     exits.put(exit.getKey(), exit.getValue().getAsString());
                 }
 
-                List<Item> items = new ArrayList<>();
+                List<Pokemon> items = new ArrayList<>();
                 JsonArray itemsJson = roomData.getAsJsonArray("items");
                 for (JsonElement itemElement : itemsJson) {
                     JsonObject itemObj = itemElement.getAsJsonObject();
                     String itemId = itemObj.get("id").getAsString();
                     String itemName = itemObj.get("name").getAsString();
                     String itemDescription = itemObj.get("description").getAsString();
-                    items.add(new Item(itemId, itemName, itemDescription));
+                    items.add(new Pokemon(itemId, itemName, itemDescription));
                 }
 
                 Room room = new Room(roomId, name, description, exits, items);

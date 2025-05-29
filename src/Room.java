@@ -6,9 +6,9 @@ public class Room {
     private String name;
     private String description;
     private Map<String, String> exits; // direction → roomId
-    private List<Item> items;
+    private List<Pokemon> items;
 
-    public Room(String id, String name, String description, Map<String, String> exits, List<Item> items) {
+    public Room(String id, String name, String description, Map<String, String> exits, List<Pokemon> items) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -32,15 +32,15 @@ public class Room {
         return exits;
     }
 
-    public List<Item> getItems() {
+    public List<Pokemon> get() {
         return items;
     }
 
-    public void removeItem(Item item) {
+    public void removeItem(Pokemon item) {
         items.remove(item);
     }
 
-    public void addItem(Item item) {
+    public void addItem(Pokemon item) {
         items.add(item);
     }
 
@@ -50,10 +50,8 @@ public class Room {
         sb.append(description).append("\n");
 
         if (!items.isEmpty()) {
-            sb.append("You see: ");
-            for (Item item : items) {
-                sb.append(item.getName()).append(", ");
-            }
+            sb.append(Pokemon.getName " attacks you!");
+         
             // Remove trailing comma and space
             sb.setLength(sb.length() - 2);
             sb.append(".\n");
