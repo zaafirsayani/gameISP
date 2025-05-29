@@ -109,7 +109,7 @@
       "description": "Emerging from the woods, a giant volcano looms into view. The ground before you is rocky and uneven; the air is hot and filled with a putrid smell. You recognize this as the famous Cinnabar Volcano, known for its fiery Pokemon and treacherous terrain. Go west onto the volcano, or go east back to the beach.",
       "dialogue": "You can go west onto the volcano, or east back to the beach.",
       "exits": {
-        "north": "volcanocave",
+        "west": "volcanocaves",
         "east": "beachnorth"
       },
       "items": []
@@ -119,17 +119,28 @@
       "description": "Emerging from the woods, a giant volcano looms into view. The ground before you is rocky and uneven; the air is hot and filled with a putrid smell. You recognize this as the famous Cinnabar Volcano, known for its fiery Pokemon and treacherous terrain. Go east onto the volcano, or go west back to the forest.",
       "dialogue": "You can go south back to the northern forest.",
       "exits": {
-        "west": "forestnorth"
+        "west": "forestnorth",
+        "east": "volcanocaves"
       },
       "items": []
     },
     "volcanocaves": {
       "name": "Volcano Caves",
-      "description": "You enter a dark cave inside the volcano. The walls are hot to the touch, and you can hear the sound of bubbling lava nearby. The air is thick with smoke, and you can see faint glowing rocks in the distance.",
+      "description": "You enter a dark cave inside the volcano. The walls are hot to the touch, and you can hear the sound of bubbling lava nearby. Obsidian can be seen on the floor and walls, and the air is thick with sulphur. A light flickers in the distance to the north.",
       "dialogue": "You can go south back to the volcano east.",
       "exits": {
         "west": "volcanowest",
-        "east": "volcanoeast"
+        "east": "volcanoeast",
+        "north": "volcanonorth"
+      },
+      "items": []
+    },
+    "volcanonorth": {
+      "name": "Volcano North",
+      "description": "You are at the northern end of the volcano. The heat is intense, and you can see lava flowing in the distance. A path leads south back to the caves.",
+      "dialogue": "You can go south back to the caves.",
+      "exits": {
+        "south": "volcanocaves"
       },
       "items": []
     }
