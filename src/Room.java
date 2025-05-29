@@ -56,8 +56,6 @@ public class Room {
         sb.append("\n");
         sb.append(description).append("\n");
         sb.append("\n");
-        sb.append(dialogue).append("\n");
-        sb.append("\n");
 
         if (!items.isEmpty()) {
             sb.append("You see: ");
