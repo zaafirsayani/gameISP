@@ -5,15 +5,21 @@ public class Room {
     private String id;
     private String name;
     private String description;
+    private String dialogue;
     private Map<String, String> exits; // direction → roomId
     private List<Pokemon> items;
 
-    public Room(String id, String name, String description, Map<String, String> exits, List<Pokemon> items) {
+    public Room(String id, String name, String description, Map<String, String> exits, List<Pokemon> items, String dialogue) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.exits = exits;
         this.items = items;
+        this.dialogue = dialogue;
+    }
+
+    public String getDialogue() {
+        return dialogue;
     }
 
     public String getId() {
@@ -47,7 +53,9 @@ public class Room {
     public String getLongDescription() {
         StringBuilder sb = new StringBuilder();
         sb.append(name).append("\n");
+        sb.append("\n");
         sb.append(description).append("\n");
+        sb.append("\n");
 
         if (!items.isEmpty()) {
             sb.append(Pokemon.getName " attacks you!");
