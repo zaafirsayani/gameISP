@@ -17,6 +17,9 @@ public class CommandParser {
                 } else {
                     String direction = words[1];
                     Room currentRoom = rooms.get(player.getCurrentRoomId());
+                    if(currentRoom == null){
+                        System.out.println("next room not found!");
+                    }
                     String nextRoomId = currentRoom.getExits().get(direction);
                     if (nextRoomId != null) {
                         player.setCurrentRoomId(nextRoomId);
@@ -38,30 +41,8 @@ public class CommandParser {
                     System.out.println("Your inventory is empty.");
                 } else {
                     System.out.println("You are carrying:");
-                    for (Item item : player.getInventory()) {
+                    for (Pokemon item : player.getInventory()) {
                         System.out.println("- " + item.getName());
-                    }
-                }
-                break;
-            case "take", "grab", "pick":
-                if (words.length < 2) {
-                    System.out.println("Take what?");
-                } else {
-                    String itemName = words[1];
-                    Room room = rooms.get(player.getCurrentRoomId());
-                    Item itemToTake = null;
-                    for (Item item : room.getItems()) {
-                        if (item.getName().equalsIgnoreCase(itemName)) {
-                            itemToTake = item;
-                            break;
-                        }
-                    }
-                    if (itemToTake != null) {
-                        room.removeItem(itemToTake);
-                        player.addItem(itemToTake);
-                        System.out.println("You take the " + itemToTake.getName() + ".");
-                    } else {
-                        System.out.println("You cannot take a(n) " + itemName + " .");
                     }
                 }
                 break;
@@ -69,22 +50,8 @@ public class CommandParser {
                 if (words.length < 2) {
                     System.out.println("Drop what?");
                 } else {
-                    String itemName = words[1];
-                    Item itemToDrop = null;
-                    for (Item item : player.getInventory()) {
-                        if (item.getName().equalsIgnoreCase(itemName)) {
-                            itemToDrop = item;
-                            break;
-                        }
-                    }
-                    if (itemToDrop != null) {
-                        player.removeItem(itemToDrop);
-                        Room room = rooms.get(player.getCurrentRoomId());
-                        room.addItem(itemToDrop);
-                        System.out.println("You drop the " + itemToDrop.getName() + ".");
-                    } else {
-                        System.out.println("You don't have a " + itemName + ".");
-                    }
+                    String pokeName = words[1];
+                   
                 }
                 break;
             case "talk", "speak":
