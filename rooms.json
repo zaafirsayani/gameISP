@@ -6,7 +6,7 @@
       "exits": {
         "north": "pol"
       },
-      "items": []
+      "pokemons": []
 
     },
     "bruh": {
@@ -16,21 +16,40 @@
       "exits": {
         "north": "pol"
       },
-      "items": []
+      "pokemons": []
     },
     "pol": {
       "name": "Professor Oak's Lab",
       "description": "Filled with pieces of research equipment you could never name, the lab of Professor Oak is humming with a low note. Professor Oak sits at his desk, awaiting your arrival.",
-      "dialogue":  "Hello Ash! You seem ready to start your journey. I've been awaiting a new trainer for a very long time. I believe you are ready to choose your first Pokemon. You can choose between Bulbasaur, Charmander, or Squirtle.",
+      "dialogue":  "Hello Ash! You seem ready to start your journey. I've been awaiting a new trainer for a very long time. I believe you are ready to choose your first Pokemon. You can choose between Charmander, Squirtle, or Bulbasaur!",
       "exits":{
         "north": "town north",
         "south": "bruh"
       },
-      "items": [
+      "pokemons": [
         {
-          "id": "p1",
-          "name": "Pokeball",
-          "description": "A red and white standard Pokeball."
+          "name": "Charmander",
+          "description": "Hatched from an egg from Cinnabar Volcano; this little fire lizard has a small flame on its tail.",
+          "hp": 39,
+          "atk": 60,
+          "def": 50,
+          "spd": 65
+        },
+        {
+          "name": "Squirtle",
+          "description": "Hatched from an egg from Whirlpool Beach. A cute water turtle that enjoys sunbathing.",
+          "hp": 44,
+          "atk": 50,
+          "def": 65,
+          "spd": 43
+        },
+        {
+          "name": "Bulbasaur",
+          "description": "Hatched from an egg from Grassy Forest, this little grass dinosaur has a bulb on its back that will grow as it evolves.",
+          "hp": 45,
+          "atk": 65,
+          "def": 65,
+          "spd": 45
         }
       ]
     },
@@ -43,27 +62,61 @@
         "east": "beachsouth",
         "south": "pol"
       },
-      "items": []
+      "pokemons": []
     },
     "forestclearing": {
       "name": "Forest Clearing",
-      "description": "You are in a clearing in the forest, lush grass under your feet. The trees are tall and thick, and the air is filled with the sounds of chirping Pokemon. You can see a path leading deeper into the forest.",
+      "description": "You are in a clearing in the forest, with lush grass under your feet. The trees are tall and thick, and the air is filled with the sounds of chirping Pokemon. A path leads north deeper into the forest.",
       "dialogue": "You can go north to enter forest or south back to the lab.",
       "exits": {
-        "north": "deeperforest",
-        "south": "pol"
+        "north": "forestmiddle",
+        "east": "town north"
       },
-      "items": []
+      "pokemons": [
+        {
+          "name": "Rowlet",
+          "description": "A small, round, avian Pokemon with a leafy bowtie. It is known for its keen eyesight and ability to blend into grassy environments.",
+          "hp": 68,
+          "atk": 55,
+          "def": 55,
+          "spd": 42
+        }
+      ]
     },
     "forestmiddle": {
       "name": "Middle of the Forest",
-      "description": "You are inside the forest. The trees are dense, and your path is narrow. You can hear the sounds of hidden yet watchful Pokemon all around you. A path leads south back to the clearing.",
+      "description": "You are inside the forest. The trees are dense, and your path is narrow. You can hear the sounds of hidden yet watchful Pokemon all around you. The path you are on runs north-south.",
       "dialogue": "You can go south back to the clearing.",
       "exits": {
         "south": "forestclearing",
         "north": "forestnorth"
       },
-      "items": []
+      "pokemons": [
+        {
+          "name": "Treecko",
+          "description": "A little gecko-like Pokemon with a green body and a long tail. It is frail but fast.",
+          "hp": 40,
+          "atk": 65,
+          "def": 55,
+          "spd": 70
+        },
+        {
+          "name": "Caterpie",
+          "description": "An adorable caterpillar-like Pokemon with a green body, yellow circles on its body, and large eyes. It also has a red forked horn on its head.",
+          "hp": 45,
+          "atk": 30,
+          "def": 35,
+          "spd": 45
+        },
+        {
+          "name": "Rowlet",
+          "description": "A small, round, avian Pokemon with a leafy bowtie. It is known for its keen eyesight and ability to blend into grassy environments.",
+          "hp": 68,
+          "atk": 55,
+          "def": 55,
+          "spd": 42
+        }
+      ]
     },
     "forestnorth": {
       "name": "Northern Forest",
@@ -73,16 +126,25 @@
         "south": "forestmiddle",
         "east": "volcanowest"
       },
-      "items": []
+      "pokemons": [
+        {
+          "name": "Caterpie",
+          "description": "An adorable caterpillar-like Pokemon with a green body, yellow circles on its body, and large eyes. It also has a red forked horn on its head.",
+          "hp": 45,
+          "atk": 30,
+          "def": 35,
+          "spd": 45
+        }
+      ]
     },
     "beachsouth": {
       "name": "Whirlpool Beach South",
-      "description": "You come to the beach. The waves are crashing against the shore, and a few Pokemon are playing in the water. A path leads southwest back to the town.",
-      "dialogue": "You can go west back to the town.",
+      "description": "You come to the beach. The waves are crashing against the shore, and a few Pokemon are playing in the water. A path leads roughly west back to the town.",
+      "dialogue": "",
       "exits": {
         "west": "town north"
       },
-      "items": []
+      "pokemons": []
     },
     "beachmiddle": {
       "name": "Whirlpool Beach Middle",
@@ -92,7 +154,32 @@
         "south": "beachsouth",
         "north": "beachnorth"
       },
-      "items": []
+      "pokemons": [
+        {
+          "name": "Mudkip",
+          "description": "A small blue water Pokemon with a fin on its head and a tail that resembles a paddle. It is known for its playful nature, and it spits water at you when it feels scared",
+          "hp": 50,
+          "atk": 70,
+          "def": 50,
+          "spd": 40
+        },
+        {
+          "name": "Froakie",
+          "description": "A sneaky little frog-like Pokemon, blue with a white bubble collar. It is known for its agility and ability to jump high.",
+          "hp": 41,
+          "atk": 62,
+          "def": 44,
+          "spd": 71
+        },
+        {
+          "name": "Squirtle",
+          "description": "A cute turtle-like Pokemon that enjoys sunbathing.",
+          "hp": 44,
+          "atk": 50,
+          "def": 65,
+          "spd": 43
+        }
+      ]
     },
     "beachnorth": {
       "name": "Whirlpool Beach North",
@@ -102,138 +189,166 @@
         "south": "beachmiddle",
         "west": "volcanoeast"
       },
-      "items": []
+      "pokemons": []
     },
     "volcanoeast": {
       "name": "Volcano East",
       "description": "Emerging from the woods, a giant volcano looms into view. The ground before you is rocky and uneven; the air is hot and filled with a putrid smell. You recognize this as the famous Cinnabar Volcano, known for its fiery Pokemon and treacherous terrain. Go west onto the volcano, or go east back to the beach.",
       "dialogue": "You can go west onto the volcano, or east back to the beach.",
       "exits": {
-        "north": "volcanocave",
+        "west": "volcanocave",
         "east": "beachnorth"
       },
-      "items": []
+      "pokemons": [
+        {
+          "name": "Vulpix",
+          "description": "A small fox-like Pokemon with six orange tails. It can shoot embers from its mouth and control flames.",
+          "hp": 38,
+          "atk": 50,
+          "def": 65,
+          "spd": 65
+        },
+        {
+          "name": "Growlithe",
+          "description": "A small, orange dog-like Pokemon with black stripes. It is known for its loyalty and bravery.",
+          "hp": 55,
+          "atk": 70,
+          "def": 50,
+          "spd": 60
+        }
+      ]
     },
     "volcanowest": {
       "name": "Volcano West",
       "description": "Emerging from the woods, a giant volcano looms into view. The ground before you is rocky and uneven; the air is hot and filled with a putrid smell. You recognize this as the famous Cinnabar Volcano, known for its fiery Pokemon and treacherous terrain. Go east onto the volcano, or go west back to the forest.",
-      "dialogue": "You can go south back to the northern forest.",
-      "exits": {
-        "west": "forestnorth"
-      },
-      "items": []
-    },
-    "volcanocaves": {
-      "name": "Volcano Caves",
-      "description": "You enter a dark cave inside the volcano. The walls are hot to the touch, and you can hear the sound of bubbling lava nearby. The air is thick with smoke, and you can see faint glowing rocks in the distance.",
-      "dialogue": "You can go south back to the volcano east.",
-      "exits": {
-        "west": "volcanowest",
-        "east": "volcanoeast"
-        "west": "forestclearing",
-        "east": "beachsouth",
-        "south": "pol"
-      },
-      "items": []
-    },
-    "forestclearing": {
-      "name": "Forest Clearing",
-      "description": "You are in a clearing in the forest, lush grass under your feet. The trees are tall and thick, and the air is filled with the sounds of chirping Pokemon. You can see a path leading deeper into the forest.",
-      "dialogue": "You can go north to enter forest or south back to the lab.",
-      "exits": {
-        "north": "deeperforest",
-        "south": "pol"
-      },
-      "items": []
-    },
-    "forestmiddle": {
-      "name": "Middle of the Forest",
-      "description": "You are inside the forest. The trees are dense, and your path is narrow. You can hear the sounds of hidden yet watchful Pokemon all around you. A path leads south back to the clearing.",
-      "dialogue": "You can go south back to the clearing.",
-      "exits": {
-        "south": "forestclearing",
-        "north": "forestnorth"
-      },
-      "items": []
-    },
-    "forestnorth": {
-      "name": "Northern Forest",
-      "description": "You are at the northern end of the forest. The trees are getting sparse, and the chirping of Pokemon seems almost absent. A mysterious path leads east, seemingly out of the forest. You can also return south back to the middle of the forest.",
-      "dialogue": "You can go east deeper into the woods, or south back to the middle of the forest.",
-      "exits": {
-        "south": "forestmiddle",
-        "east": "volcanowest"
-      },
-      "items": []
-    },
-    "beachsouth": {
-      "name": "Whirlpool Beach South",
-      "description": "You come to the beach. The waves are crashing against the shore, and a few Pokemon are playing in the water. A path leads southwest back to the town.",
-      "dialogue": "You can go west back to the town.",
-      "exits": {
-        "west": "town north"
-      },
-      "items": []
-    },
-    "beachmiddle": {
-      "name": "Whirlpool Beach Middle",
-      "description": "You are in the middle of Whirlpool Beach. The water is calm here, and the Pokemon are easier to see now. A path leads east back to the south of the beach.",
-      "dialogue": "You can go east back to the south of the beach.",
-      "exits": {
-        "south": "beachsouth",
-        "north": "beachnorth"
-      },
-      "items": []
-    },
-    "beachnorth": {
-      "name": "Whirlpool Beach North",
-      "description": "You are at the northern end of Whirlpool Beach. The water is deeper here. A mysterious path through impenetrable woods leads west, and a path leads south back to the middle of the beach.",
-      "dialogue": "You can go west through the woods, or south back to the middle of the beach.",
-      "exits": {
-        "south": "beachmiddle",
-        "west": "volcanoeast"
-      },
-      "items": []
-    },
-    "volcanoeast": {
-      "name": "Volcano East",
-      "description": "Emerging from the woods, a giant volcano looms into view. The ground before you is rocky and uneven; the air is hot and filled with a putrid smell. You recognize this as the famous Cinnabar Volcano, known for its fiery Pokemon and treacherous terrain. Go west onto the volcano, or go east back to the beach.",
-      "dialogue": "You can go west onto the volcano, or east back to the beach.",
-      "exits": {
-        "west": "volcanocaves",
-        "east": "beachnorth"
-      },
-      "items": []
-    },
-    "volcanowest": {
-      "name": "Volcano West",
-      "description": "Emerging from the woods, a giant volcano looms into view. The ground before you is rocky and uneven; the air is hot and filled with a putrid smell. You recognize this as the famous Cinnabar Volcano, known for its fiery Pokemon and treacherous terrain. Go east onto the volcano, or go west back to the forest.",
-      "dialogue": "You can go south back to the northern forest.",
+      "dialogue": "You can go west back to the northern forest.",
       "exits": {
         "west": "forestnorth",
         "east": "volcanocaves"
       },
-      "items": []
+      "pokemons": [
+        {
+          "name": "Vulpix",
+          "description": "A small fox-like Pokemon with six orange tails. It can shoot embers from its mouth and control flames.",
+          "hp": 38,
+          "atk": 50,
+          "def": 65,
+          "spd": 65
+        },
+        {
+          "name": "Chimchar",
+          "description": "A monkey-like Pokemon with a flame on its tail. It is known for its agility and ability to climb trees.",
+          "hp": 44,
+          "atk": 58,
+          "def": 44,
+          "spd": 61
+        }
+      ]
     },
     "volcanocaves": {
       "name": "Volcano Caves",
-      "description": "You enter a dark cave inside the volcano. The walls are hot to the touch, and you can hear the sound of bubbling lava nearby. Obsidian can be seen on the floor and walls, and the air is thick with sulphur. A light flickers in the distance to the north.",
-      "dialogue": "You can go south back to the volcano east.",
+      "description": "You enter a dark cave inside the volcano. The walls are hot to the touch, and you can hear the sound of bubbling lava nearby. The air smells of sulfur and ash. A faint light glows from the north, and two exits are to the east and west.",
+      "dialogue": "",
       "exits": {
         "west": "volcanowest",
-        "east": "volcanoeast",
-        "north": "volcanonorth"
+        "east": "volcanoeast"
       },
-      "items": []
+      "pokemons": []
     },
+    
     "volcanonorth": {
       "name": "Volcano North",
-      "description": "You are at the northern end of the volcano. The heat is intense, and you can see lava flowing in the distance. A path leads south back to the caves.",
-      "dialogue": "You can go south back to the caves.",
+      "description": "Emerging from the caves, you find yourself at the northern end of the volcano. A formidable mountain range stands before you, stretching for who knows how long. The mountains, immovable guardians of whatever is beyond, watch over you. You sweat at the thought of attempting to climb the steep rocks. \nA path leads roughly west-east here. Behind you to the south is Cinnabar Volcano.",
+      "dialogue": "",
       "exits": {
-        "south": "volcanocaves"
+        "south": "volcanocaves",
+        "west": "powerplant entrance",
+        "east": "haunted mansion west"
       },
-      "items": []
+      "pokemons": []
+    },
+
+    "powerplant entrance": {
+      "name": "Gates of Dynavolt Power Plant",
+      "description": "You arrive at the gates of an old power plant, a complex filled with large buildings of unfamiliar shapes. Some sparks fly from the power lines. The plaque at the front reads \"Dynavolt Power Plant\". Go west into the facility, or east back to the volcano.",
+      "dialogue": "",
+      "exits": {
+        "east": "volcanonorth",
+        "west": "powerplant corridor"
+      },
+      "pokemons": []
+    },
+
+    "powerplant bruh": {
+      "name": "Gates of Dynavolt Power Plant",
+      "description": "Why are you here again? Too scared to explore the complex? Go back west into the facility!",
+      "dialogue": "Why are you here again? Too scared to explore the complex?",
+      "exits": {
+        "east": "volcanonorth",
+        "west": "powerplant corridor"
+      },
+      "pokemons": []
+    },
+
+    "powerplant corridor": {
+      "name": "Power Plant Corridor",
+      "description": "You are in a long corridor that runs east-west. The walls are lined with depictions of strange machinery, and the air is filled with strange odours. \nBefore you are two doors: one to the north, and another to the south. The corridor continues west.",
+      "dialogue": "",
+      "exits": {
+        "north": "powerplant office",
+        "east": "powerplant entrance",
+        "south": "powerplant control room"
+      },
+      "pokemons": []
+    },
+
+    "powerplant office": {
+      "name": "Dynavolt's Office",
+      "description": "As you enter the office, you hear momentarily the squeal of a pokemon that must have been startled by your entry and gone to hide. The office has multiple chairs and computers. A door leads south back to the corridor.",
+      "dialogue": "I'm not here to help, this is your journey!",
+      "exits": {
+        "south": "powerplant corridor"
+      },
+      "pokemons": [
+        {
+          "name": "Pikachu",
+          "description": "A cute yellow rodent-like Pokemon; its tail is shaped like a lightning bolt.",
+          "hp": 35,
+          "atk": 55,
+          "def": 50,
+          "spd": 90
+        }
+      ]
+    },
+
+    "powerplant control room": {
+      "name": "Dynavolt's Control Room",
+      "description": "You enter a dark room filled with buttons and dials. A buzzing sound permeates this space.",
+      "dialogue": "",
+      "exits": {
+        "north": "powerplant corridor"
+      },
+      "pokemons": [
+
+      ]
+    },
+
+    "powerplant generator": {
+      "name": "Dynavolt Generator Room",
+      "description": "",
+      "dialogue": "",
+      "exits": {},
+      "pokemons": []
+    },
+
+    "haunted mansion west": {
+      "name": "Mansion West",
+      "description": "You arrive at the door of a large, old mansion. The windows are broken, and the door is slightly ajar. The sign in front that would have declared the house's name long ago is now illegible. A chill runs through you. Go east into the mansion, or west back to the volcano.",
+      "dialogue": "Spooky, right?",
+      "exits": {
+        "west": "volcanonorth"
+      },
+      "pokemons": []
     }
 
   }
