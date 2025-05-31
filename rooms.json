@@ -6,7 +6,7 @@
       "exits": {
         "north": "pol"
       },
-      "items": []
+      "pokemons": []
 
     },
     "bruh": {
@@ -16,7 +16,7 @@
       "exits": {
         "north": "pol"
       },
-      "items": []
+      "pokemons": []
     },
     "pol": {
       "name": "Professor Oak's Lab",
@@ -26,11 +26,8 @@
         "north": "town north",
         "south": "bruh"
       },
-      "items": [
+      "pokemons": [
         {
-          "id": "p1",
-          "name": "Pokeball",
-          "description": "A red and white standard Pokeball."
         }
       ]
     },
@@ -43,7 +40,7 @@
         "east": "beachsouth",
         "south": "pol"
       },
-      "items": []
+      "pokemons": []
     },
     "forestclearing": {
       "name": "Forest Clearing",
@@ -53,7 +50,7 @@
         "north": "deeperforest",
         "south": "pol"
       },
-      "items": []
+      "pokemons": []
     },
     "forestmiddle": {
       "name": "Middle of the Forest",
@@ -63,7 +60,7 @@
         "south": "forestclearing",
         "north": "forestnorth"
       },
-      "items": []
+      "pokemons": []
     },
     "forestnorth": {
       "name": "Northern Forest",
@@ -73,7 +70,7 @@
         "south": "forestmiddle",
         "east": "volcanowest"
       },
-      "items": []
+      "pokemons": []
     },
     "beachsouth": {
       "name": "Whirlpool Beach South",
@@ -82,7 +79,7 @@
       "exits": {
         "west": "town north"
       },
-      "items": []
+      "pokemons": []
     },
     "beachmiddle": {
       "name": "Whirlpool Beach Middle",
@@ -92,7 +89,7 @@
         "south": "beachsouth",
         "north": "beachnorth"
       },
-      "items": []
+      "pokemons": []
     },
     "beachnorth": {
       "name": "Whirlpool Beach North",
@@ -102,7 +99,7 @@
         "south": "beachmiddle",
         "west": "volcanoeast"
       },
-      "items": []
+      "pokemons": []
     },
     "volcanoeast": {
       "name": "Volcano East",
@@ -112,7 +109,7 @@
         "north": "volcanocave",
         "east": "beachnorth"
       },
-      "items": []
+      "pokemons": []
     },
     "volcanowest": {
       "name": "Volcano West",
@@ -121,7 +118,7 @@
       "exits": {
         "west": "forestnorth"
       },
-      "items": []
+      "pokemons": []
     },
     "volcanocaves": {
       "name": "Volcano Caves",
@@ -129,112 +126,9 @@
       "dialogue": "You can go south back to the volcano east.",
       "exits": {
         "west": "volcanowest",
-        "east": "volcanoeast"
-        "west": "forestclearing",
-        "east": "beachsouth",
-        "south": "pol"
-      },
-      "items": []
-    },
-    "forestclearing": {
-      "name": "Forest Clearing",
-      "description": "You are in a clearing in the forest, lush grass under your feet. The trees are tall and thick, and the air is filled with the sounds of chirping Pokemon. You can see a path leading deeper into the forest.",
-      "dialogue": "You can go north to enter forest or south back to the lab.",
-      "exits": {
-        "north": "deeperforest",
-        "south": "pol"
-      },
-      "items": []
-    },
-    "forestmiddle": {
-      "name": "Middle of the Forest",
-      "description": "You are inside the forest. The trees are dense, and your path is narrow. You can hear the sounds of hidden yet watchful Pokemon all around you. A path leads south back to the clearing.",
-      "dialogue": "You can go south back to the clearing.",
-      "exits": {
-        "south": "forestclearing",
-        "north": "forestnorth"
-      },
-      "items": []
-    },
-    "forestnorth": {
-      "name": "Northern Forest",
-      "description": "You are at the northern end of the forest. The trees are getting sparse, and the chirping of Pokemon seems almost absent. A mysterious path leads east, seemingly out of the forest. You can also return south back to the middle of the forest.",
-      "dialogue": "You can go east deeper into the woods, or south back to the middle of the forest.",
-      "exits": {
-        "south": "forestmiddle",
-        "east": "volcanowest"
-      },
-      "items": []
-    },
-    "beachsouth": {
-      "name": "Whirlpool Beach South",
-      "description": "You come to the beach. The waves are crashing against the shore, and a few Pokemon are playing in the water. A path leads southwest back to the town.",
-      "dialogue": "You can go west back to the town.",
-      "exits": {
-        "west": "town north"
-      },
-      "items": []
-    },
-    "beachmiddle": {
-      "name": "Whirlpool Beach Middle",
-      "description": "You are in the middle of Whirlpool Beach. The water is calm here, and the Pokemon are easier to see now. A path leads east back to the south of the beach.",
-      "dialogue": "You can go east back to the south of the beach.",
-      "exits": {
-        "south": "beachsouth",
-        "north": "beachnorth"
-      },
-      "items": []
-    },
-    "beachnorth": {
-      "name": "Whirlpool Beach North",
-      "description": "You are at the northern end of Whirlpool Beach. The water is deeper here. A mysterious path through impenetrable woods leads west, and a path leads south back to the middle of the beach.",
-      "dialogue": "You can go west through the woods, or south back to the middle of the beach.",
-      "exits": {
-        "south": "beachmiddle",
-        "west": "volcanoeast"
-      },
-      "items": []
-    },
-    "volcanoeast": {
-      "name": "Volcano East",
-      "description": "Emerging from the woods, a giant volcano looms into view. The ground before you is rocky and uneven; the air is hot and filled with a putrid smell. You recognize this as the famous Cinnabar Volcano, known for its fiery Pokemon and treacherous terrain. Go west onto the volcano, or go east back to the beach.",
-      "dialogue": "You can go west onto the volcano, or east back to the beach.",
-      "exits": {
-        "west": "volcanocaves",
-        "east": "beachnorth"
-      },
-      "items": []
-    },
-    "volcanowest": {
-      "name": "Volcano West",
-      "description": "Emerging from the woods, a giant volcano looms into view. The ground before you is rocky and uneven; the air is hot and filled with a putrid smell. You recognize this as the famous Cinnabar Volcano, known for its fiery Pokemon and treacherous terrain. Go east onto the volcano, or go west back to the forest.",
-      "dialogue": "You can go south back to the northern forest.",
-      "exits": {
-        "west": "forestnorth",
-        "east": "volcanocaves"
-      },
-      "items": []
-    },
-    "volcanocaves": {
-      "name": "Volcano Caves",
-      "description": "You enter a dark cave inside the volcano. The walls are hot to the touch, and you can hear the sound of bubbling lava nearby. Obsidian can be seen on the floor and walls, and the air is thick with sulphur. A light flickers in the distance to the north.",
-      "dialogue": "You can go south back to the volcano east.",
-      "exits": {
-        "west": "volcanowest",
         "east": "volcanoeast",
-        "north": "volcanonorth"
+        "south": "pol"
       },
-      "items": []
-    },
-    "volcanonorth": {
-      "name": "Volcano North",
-      "description": "You are at the northern end of the volcano. The heat is intense, and you can see lava flowing in the distance. A path leads south back to the caves.",
-      "dialogue": "You can go south back to the caves.",
-      "exits": {
-        "south": "volcanocaves"
-      },
-      "items": []
+      "pokemons": []
     }
-
-  }
-  
+}

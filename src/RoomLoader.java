@@ -12,10 +12,12 @@ public class RoomLoader {
             for (Map.Entry<String, JsonElement> entry : jsonObject.entrySet()) {
                 String roomId = entry.getKey();
                 JsonObject roomData = entry.getValue().getAsJsonObject();
+                
 
                 String name = roomData.get("name").getAsString();
                 String description = roomData.get("description").getAsString();
-                String dialogue = roomData.get("dialogue").getAsString();
+                JsonElement dialogueElement = roomData.get("dialogue");
+                String dialogue = (dialogueElement != null) ? dialogueElement.getAsString() : "";
 
                 Map<String, String> exits = new HashMap<>();
                 JsonObject exitsJson = roomData.getAsJsonObject("exits");
@@ -23,17 +25,21 @@ public class RoomLoader {
                     exits.put(exit.getKey(), exit.getValue().getAsString());
                 }
 
-                List<Pokemon> items = new ArrayList<>();
-                JsonArray itemsJson = roomData.getAsJsonArray("items");
-                for (JsonElement itemElement : itemsJson) {
-                    JsonObject itemObj = itemElement.getAsJsonObject();
-                    String itemId = itemObj.get("id").getAsString();
-                    String itemName = itemObj.get("name").getAsString();
-                    String itemDescription = itemObj.get("description").getAsString();
-                    items.add(new Pokemon(itemId, itemName, itemDescription));
+                List<Pokemon> pokeList = new ArrayList<>();
+                JsonArray pokemonsJson = roomData.getAsJsonArray("pokemons");
+                for (JsonElement pokeElement : pokemonsJson) {
+                    JsonObject pokeObj = pokeElement.getAsJsonObject();
+                    String pokeName = pokeObj.get("name").getAsString();
+                    int pokeHealth = pokeObj.get("hp").getAsInt();
+                    int pokeAttack = pokeObj.get("atk").getAsInt();
+                    int pokeDefense = pokeObj.get("def").getAsInt();
+                    int pokeSpeed = pokeObj.get("spd").getAsInt();
+                    
+                    pokeList.add(new Pokemon(pokeName, pokeHealth, pokeAttack, pokeDefense, pokeSpeed));
+                    // String name, int atk, int def, int hp, int spd
                 }
 
-                Room room = new Room(roomId, name, description, exits, items, dialogue);
+                Room room = new Room(roomId, name, description, exits, pokeList, dialogue);
                 rooms.put(roomId, room);
             }
         } catch (Exception e) {
