@@ -114,7 +114,11 @@ public class CommandParser {
                 break;
             case "Charmander", "charmander":
                 currentRoom = rooms.get(player.getCurrentRoomId());
-                if (currentRoom.getId().equals("pol")) {
+                if (currentRoom.getId().equals("pol") && currentRoom.get().size() > 0) {
+                    if (currentRoom.get().size() < 3) {
+                        System.out.println("Prof. Oak: I'm afraid there are no more Pokemon available for you in the lab.");
+                        return;
+                    }
                     Pokemon foundPokemon = currentRoom.get().get(0);
                     player.addItem(foundPokemon);
                     System.out.println("You received a Charmander!");
@@ -126,7 +130,9 @@ public class CommandParser {
                         "Defense: " + foundPokemon.getDef() + "\n" +
                         "Speed: " + foundPokemon.getSpd()
                     );
-                    currentRoom.removeItem(foundPokemon);
+                    currentRoom.removeItem(currentRoom.get().get(0)); // Remove Charmander
+                    currentRoom.removeItem(currentRoom.get().get(0)); // Remove Squirtle
+                    currentRoom.removeItem(currentRoom.get().get(0)); // Remove Bulbasaur
                 } else {
                     System.out.println("This isn't the lab, nobody's giving you a Charmander for free!");
                 }
@@ -134,6 +140,10 @@ public class CommandParser {
             case "Squirtle", "squirtle":
                 currentRoom = rooms.get(player.getCurrentRoomId());
                 if (currentRoom.getId().equals("pol")) {
+                    if (currentRoom.get().size() < 3) {
+                        System.out.println("Prof. Oak: I'm afraid there are no more Pokemon available for you in the lab.");
+                        return;
+                    }
                     Pokemon foundPokemon = currentRoom.get().get(1);
                     player.addItem(foundPokemon);
                     System.out.println("You received a Squirtle!");
@@ -145,7 +155,9 @@ public class CommandParser {
                         "Defense: " + foundPokemon.getDef() + "\n" +
                         "Speed: " + foundPokemon.getSpd()
                     );
-                    currentRoom.removeItem(foundPokemon);
+                    currentRoom.removeItem(currentRoom.get().get(0)); // Remove Charmander
+                    currentRoom.removeItem(currentRoom.get().get(0)); // Remove Squirtle
+                    currentRoom.removeItem(currentRoom.get().get(0)); // Remove Bulbasaur
                 } else {
                     System.out.println("This isn't the lab, nobody's giving you a Squirtle for free!");
                 }
@@ -153,6 +165,10 @@ public class CommandParser {
             case "Bulbasaur", "bulbasaur":
                 currentRoom = rooms.get(player.getCurrentRoomId());
                 if (currentRoom.getId().equals("pol")) {
+                    if (currentRoom.get().size() < 3) {
+                        System.out.println("Prof. Oak: I'm afraid there are no more Pokemon available for you in the lab.");
+                        return;
+                    }
                     Pokemon foundPokemon = currentRoom.get().get(2);
                     player.addItem(foundPokemon);
                     System.out.println("You received a Bulbasaur!");
@@ -164,7 +180,9 @@ public class CommandParser {
                         "Defense: " + foundPokemon.getDef() + "\n" +
                         "Speed: " + foundPokemon.getSpd()
                     );
-                    currentRoom.removeItem(foundPokemon);
+                    currentRoom.removeItem(currentRoom.get().get(0)); // Remove Charmander
+                    currentRoom.removeItem(currentRoom.get().get(0)); // Remove Squirtle
+                    currentRoom.removeItem(currentRoom.get().get(0)); // Remove Bulbasaur
                 } else {
                     System.out.println("This isn't the lab, nobody's giving you a Bulbasaur for free!");
                 }
