@@ -265,7 +265,7 @@
       "exits": {
         "south": "volcanocaves",
         "west": "powerplant entrance",
-        "east": "haunted mansion west"
+        "east": "mansion west"
       },
       "pokemons": []
     },
@@ -343,7 +343,7 @@
       "pokemons": []
     },
 
-    "haunted mansion west": {
+    "mansion west": {
       "name": "Mansion West",
       "description": "You arrive at the door of a large, old mansion. The windows are broken, and the door is slightly ajar. The sign in front that would have declared the house's name long ago is now illegible. A chill runs through you. Go east into the mansion, or west back to the volcano.",
       "dialogue": "Spooky, right?",
@@ -351,6 +351,25 @@
         "west": "volcanonorth"
       },
       "pokemons": []
+    },
+
+    "mansion living room": {
+      "name": "Mansion Living Room",
+      "description": "You enter a large living room filled with old furniture covered in dust and cobwebs. The only light comes from a few flickering candles, and a mysterious wind seems to be moving through the room. A door leads east back to the mansion west.",
+      "dialogue": "You can go east back to the mansion west.",
+      "exits": {
+        "east": "mansion west"
+      },
+      "pokemons": [
+        {
+          "name": "Haunter",
+          "description": "A ghostly Pokemon that floats in the air. It has a mischievous grin and is known for its malice. Some say it feeds on the pain and suffering of other Pokemon.",
+          "hp": 45,
+          "atk": 115,
+          "def": 55,
+          "spd": 95
+        }
+      ]
     }
 
   }
