@@ -51,7 +51,7 @@ public class CommandParser {
                     System.out.println("Drop what?");
                 } else {
                     String pokeName = words[1];
-                   
+                    player.removeItem(pokeName);
                 }
                 break;
             case "talk", "speak":
