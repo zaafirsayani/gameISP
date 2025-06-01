@@ -142,7 +142,8 @@
       "description": "You come to the beach. The waves are crashing against the shore, and a few Pokemon are playing in the water. A path leads roughly west back to the town.",
       "dialogue": "",
       "exits": {
-        "west": "town north"
+        "west": "town north",
+        "north": "beachmiddle"
       },
       "pokemons": []
     },
@@ -251,7 +252,8 @@
       "dialogue": "",
       "exits": {
         "west": "volcanowest",
-        "east": "volcanoeast"
+        "east": "volcanoeast",
+        "north": "volcanonorth"
       },
       "pokemons": []
     },
