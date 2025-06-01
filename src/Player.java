@@ -19,6 +19,9 @@ public class Player {
     }
 
     public void addItem(Pokemon item) {
+        if(pokeparty.size() == 3){
+            System.out.println("You are unable to collect any more Pokemon!");
+        }
         pokeparty.add(item);
     }
 
