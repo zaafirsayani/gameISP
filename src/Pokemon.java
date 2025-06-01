@@ -1,18 +1,20 @@
 public class Pokemon {
 
     private String name;
+    private String description;
     
     private int atk;
     private int def;
     private int hp;
     private int spd;
 
-    public Pokemon(String name, int atk, int def, int hp, int spd) {
+    public Pokemon(String name, String description, int atk, int def, int hp, int spd) {
         this.atk = atk;
         this.def = def;
         this.hp = hp;
         this.spd = spd;
         this.name = name;
+        this.description = description;
     }
 
     public String getName(){
@@ -33,6 +35,10 @@ public class Pokemon {
 
     public int getSpd() {
         return spd;
+    }
+
+    public String getDescription() {
+        return description;
     }
 
     public void receiveDmg(int damage){

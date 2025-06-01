@@ -32,8 +32,21 @@ public class CommandParser {
                     }
                 }
                 break;
-            case "look", "l", "where":
+            case "north", "south", "east", "west":
+                String direction = words[0];
                 Room currentRoom = rooms.get(player.getCurrentRoomId());
+                String nextRoomId = currentRoom.getExits().get(direction);
+                if (nextRoomId != null) {
+                    player.setCurrentRoomId(nextRoomId);
+                    System.out.println("You move " + direction + ".");
+                    currentRoom = rooms.get(player.getCurrentRoomId());
+                    System.out.println(currentRoom.getLongDescription());
+                } else {
+                    System.out.println("You can't go that way.");
+                }
+                break;
+            case "look", "l", "where":
+                currentRoom = rooms.get(player.getCurrentRoomId());
                 System.out.println(currentRoom.getLongDescription());
                 break;
             case "inventory", "i", "inv":
@@ -54,7 +67,7 @@ public class CommandParser {
                     player.removeItem(pokeName);
                 }
                 break;
-            case "talk", "speak":
+            case "talk", "speak", "chat", "say", "dialogue":
                 currentRoom = rooms.get(player.getCurrentRoomId());
                 String dialogue = currentRoom.getDialogue();
                 if (dialogue != null && !dialogue.isEmpty()) {
@@ -63,8 +76,99 @@ public class CommandParser {
                     System.out.println("There's no one to talk to here.");
                 }
                 break;
-            case "help", "help me", "commands", "what can i do", "what do i say", "huh":
+            case "help", "help me", "commands", "what", "what can i do", "what do i say", "huh":
                 System.out.println("Available commands: go [direction], look, take [item], drop [item], inventory, help, talk");
+                break;
+            case "search", "find":
+                currentRoom = rooms.get(player.getCurrentRoomId());
+                if (currentRoom == null) {
+                    System.out.println("You can't search here, the room does not exist.");
+                    return;
+                }
+                if (currentRoom.getId().equals("pol")) {
+                    System.out.println("What are you searching for? Professor Oak has presented the three Pokemon to you! Choose one by typing its name.");
+                    return;
+                }
+                int pokeCount = 0;
+                for (Pokemon item : currentRoom.get()) {
+                    if (item != null) {
+                        pokeCount++;
+                    }
+                }
+                int randomIndex = (int) (Math.random() * (pokeCount + 1));
+                if (randomIndex < pokeCount) {
+                    Pokemon foundPokemon = currentRoom.get().get(randomIndex);
+                    player.addItem(foundPokemon);
+                    currentRoom.removeItem(foundPokemon);
+                    System.out.println("You found a " + foundPokemon.getName() + "!");
+                    System.out.println(
+                        foundPokemon.getName() + "\n" +
+                        foundPokemon.getDescription() + "\n" +
+                        "Health: " + foundPokemon.getHp() + "\n" +
+                        "Attack: " + foundPokemon.getAtk() + "\n" +
+                        "Defense: " + foundPokemon.getDef() + "\n" +
+                        "Speed: " + foundPokemon.getSpd()
+                    );
+                } else {
+                    System.out.println("You find nothing of interest.");
+                }
+                break;
+            case "Charmander", "charmander":
+                currentRoom = rooms.get(player.getCurrentRoomId());
+                if (currentRoom.getId().equals("pol")) {
+                    Pokemon foundPokemon = currentRoom.get().get(0);
+                    player.addItem(foundPokemon);
+                    System.out.println("You received a Charmander!");
+                    System.out.println(
+                        foundPokemon.getName() + "\n" +
+                        foundPokemon.getDescription() + "\n" +
+                        "Health: " + foundPokemon.getHp() + "\n" +
+                        "Attack: " + foundPokemon.getAtk() + "\n" +
+                        "Defense: " + foundPokemon.getDef() + "\n" +
+                        "Speed: " + foundPokemon.getSpd()
+                    );
+                    currentRoom.removeItem(foundPokemon);
+                } else {
+                    System.out.println("This isn't the lab, nobody's giving you a Charmander for free!");
+                }
+                break;
+            case "Squirtle", "squirtle":
+                currentRoom = rooms.get(player.getCurrentRoomId());
+                if (currentRoom.getId().equals("pol")) {
+                    Pokemon foundPokemon = currentRoom.get().get(1);
+                    player.addItem(foundPokemon);
+                    System.out.println("You received a Squirtle!");
+                    System.out.println(
+                        foundPokemon.getName() + "\n" +
+                        foundPokemon.getDescription() + "\n" +
+                        "Health: " + foundPokemon.getHp() + "\n" +
+                        "Attack: " + foundPokemon.getAtk() + "\n" +
+                        "Defense: " + foundPokemon.getDef() + "\n" +
+                        "Speed: " + foundPokemon.getSpd()
+                    );
+                    currentRoom.removeItem(foundPokemon);
+                } else {
+                    System.out.println("This isn't the lab, nobody's giving you a Squirtle for free!");
+                }
+                break;
+            case "Bulbasaur", "bulbasaur":
+                currentRoom = rooms.get(player.getCurrentRoomId());
+                if (currentRoom.getId().equals("pol")) {
+                    Pokemon foundPokemon = currentRoom.get().get(2);
+                    player.addItem(foundPokemon);
+                    System.out.println("You received a Bulbasaur!");
+                    System.out.println(
+                        foundPokemon.getName() + "\n" +
+                        foundPokemon.getDescription() + "\n" +
+                        "Health: " + foundPokemon.getHp() + "\n" +
+                        "Attack: " + foundPokemon.getAtk() + "\n" +
+                        "Defense: " + foundPokemon.getDef() + "\n" +
+                        "Speed: " + foundPokemon.getSpd()
+                    );
+                    currentRoom.removeItem(foundPokemon);
+                } else {
+                    System.out.println("This isn't the lab, nobody's giving you a Bulbasaur for free!");
+                }
                 break;
             default:
                 System.out.println("Sorry, I don't understand that.");

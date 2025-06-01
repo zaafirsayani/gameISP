@@ -30,12 +30,13 @@ public class RoomLoader {
                 for (JsonElement pokeElement : pokemonsJson) {
                     JsonObject pokeObj = pokeElement.getAsJsonObject();
                     String pokeName = pokeObj.get("name").getAsString();
+                    String pokeDescription = pokeObj.get("description").getAsString();
                     int pokeHealth = pokeObj.get("hp").getAsInt();
                     int pokeAttack = pokeObj.get("atk").getAsInt();
                     int pokeDefense = pokeObj.get("def").getAsInt();
                     int pokeSpeed = pokeObj.get("spd").getAsInt();
                     
-                    pokeList.add(new Pokemon(pokeName, pokeHealth, pokeAttack, pokeDefense, pokeSpeed));
+                    pokeList.add(new Pokemon(pokeName, pokeDescription, pokeHealth, pokeAttack, pokeDefense, pokeSpeed));
                     // String name, int atk, int def, int hp, int spd
                 }
 
