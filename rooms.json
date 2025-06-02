@@ -33,7 +33,21 @@
           "hp": 39,
           "atk": 60,
           "def": 50,
-          "spd": 65
+          "spd": 65,
+          "moves": [
+            {
+              "name": "Flamethrower",
+              "type": "Fire"
+            },
+            {
+              "name": "Slash",
+              "type": "Normal"
+            },
+            {
+              "name": "Dragon Claw",
+              "type": "Dragon"
+            }
+          ]
         },
         {
           "name": "Squirtle",
@@ -41,7 +55,21 @@
           "hp": 44,
           "atk": 50,
           "def": 65,
-          "spd": 43
+          "spd": 43,
+          "moves": [
+            {
+              "name": "Hydro Pump",
+              "type": "Water"
+            },
+            {
+              "name": "Thrash",
+              "type": "Normal"
+            },
+            {
+              "name": "Aqua Jet",
+              "type": "Water"
+            }
+          ]
         },
         {
           "name": "Bulbasaur",
@@ -49,7 +77,21 @@
           "hp": 45,
           "atk": 65,
           "def": 65,
-          "spd": 45
+          "spd": 45,
+          "moves": [
+            {
+              "name": "Solar Beam",
+              "type": "Grass"
+            },
+            {
+              "name": "Razor Leaf",
+              "type": "Grass"
+            },
+            {
+              "name": "Pound",
+              "type": "Normal"
+            }
+          ]
         }
       ]
     },
@@ -79,7 +121,21 @@
           "hp": 68,
           "atk": 55,
           "def": 55,
-          "spd": 42
+          "spd": 42,
+          "moves": [
+            {
+              "name": "Leafage",
+              "type": "Grass"
+            },
+            {
+              "name": "Tackle",
+              "type": "Normal"
+            },
+            {
+              "name": "Peck",
+              "type": "Flying"
+            }
+          ]
         }
       ]
     },
@@ -98,7 +154,21 @@
           "hp": 40,
           "atk": 65,
           "def": 55,
-          "spd": 70
+          "spd": 70,
+          "moves": [
+            {
+              "name": "Leaf Blade",
+              "type": "Grass"
+            },
+            {
+              "name": "Shadow Ball",
+              "type": "Ghost"
+            },
+            {
+              "name": "Headbutt",
+              "type": "Normal"
+            }
+          ]
         },
         {
           "name": "Caterpie",
@@ -106,7 +176,21 @@
           "hp": 45,
           "atk": 30,
           "def": 35,
-          "spd": 45
+          "spd": 45,
+          "moves": [
+            {
+              "name": "Bug Bite",
+              "type": "Bug"
+            },
+            {
+              "name": "String Shot",
+              "type": "Bug"
+            },
+            {
+              "name": "Tackle",
+              "type": "Normal"
+            }
+          ]
         },
         {
           "name": "Rowlet",
@@ -114,7 +198,21 @@
           "hp": 68,
           "atk": 55,
           "def": 55,
-          "spd": 42
+          "spd": 42,
+          "moves": [
+            {
+              "name": "Leafage",
+              "type": "Grass"
+            },
+            {
+              "name": "Tackle",
+              "type": "Normal"
+            },
+            {
+              "name": "Peck",
+              "type": "Flying"
+            }
+          ]
         }
       ]
     },
@@ -133,7 +231,21 @@
           "hp": 45,
           "atk": 30,
           "def": 35,
-          "spd": 45
+          "spd": 45,
+          "moves": [
+            {
+              "name": "Bug Bite",
+              "type": "Bug"
+            },
+            {
+              "name": "String Shot",
+              "type": "Bug"
+            },
+            {
+              "name": "Tackle",
+              "type": "Normal"
+            }
+          ]
         }
       ]
     },
@@ -145,7 +257,8 @@
         "west": "town north",
         "north": "beachmiddle"
       },
-      "pokemons": []
+      "pokemons": [
+      ]
     },
     "beachmiddle": {
       "name": "Whirlpool Beach Middle",
@@ -162,7 +275,21 @@
           "hp": 50,
           "atk": 70,
           "def": 50,
-          "spd": 40
+          "spd": 40,
+          "moves": [
+            {
+              "name": "Water Gun",
+              "type": "Water"
+            },
+            {
+              "name": "Tackle",
+              "type": "Normal"
+            },
+            {
+              "name": "Mud-Slap",
+              "type": "Ground"
+            }
+          ]
         },
         {
           "name": "Froakie",
@@ -170,7 +297,21 @@
           "hp": 41,
           "atk": 62,
           "def": 44,
-          "spd": 71
+          "spd": 71,
+          "moves": [
+            {
+              "name": "Bubble",
+              "type": "Water"
+            },
+            {
+              "name": "Quick Attack",
+              "type": "Normal"
+            },
+            {
+              "name": "Water Pulse",
+              "type": "Water"
+            }
+          ]
         },
         {
           "name": "Squirtle",
@@ -178,7 +319,21 @@
           "hp": 44,
           "atk": 50,
           "def": 65,
-          "spd": 43
+          "spd": 43,
+          "moves": [
+            {
+              "name": "Hydro Pump",
+              "type": "Water"
+            },
+            {
+              "name": "Thrash",
+              "type": "Normal"
+            },
+            {
+              "name": "Aqua Jet",
+              "type": "Water"
+            }
+          ]
         }
       ]
     },
@@ -207,7 +362,21 @@
           "hp": 38,
           "atk": 50,
           "def": 65,
-          "spd": 65
+          "spd": 65,
+          "moves": [
+            {
+              "name": "Ember",
+              "type": "Fire"
+            },
+            {
+              "name": "Quick Attack",
+              "type": "Normal"
+            },
+            {
+              "name": "Flame Charge",
+              "type": "Fire"
+            }
+          ]
         },
         {
           "name": "Growlithe",
@@ -215,7 +384,21 @@
           "hp": 55,
           "atk": 70,
           "def": 50,
-          "spd": 60
+          "spd": 60,
+          "moves": [
+            {
+              "name": "Bite",
+              "type": "Dark"
+            },
+            {
+              "name": "Flame Wheel",
+              "type": "Fire"
+            },
+            {
+              "name": "Roar",
+              "type": "Normal"
+            }
+          ]
         }
       ]
     },
@@ -234,7 +417,21 @@
           "hp": 38,
           "atk": 50,
           "def": 65,
-          "spd": 65
+          "spd": 65,
+          "moves": [
+            {
+              "name": "Ember",
+              "type": "Fire"
+            },
+            {
+              "name": "Quick Attack",
+              "type": "Normal"
+            },
+            {
+              "name": "Flame Charge",
+              "type": "Fire"
+            }
+          ]
         },
         {
           "name": "Chimchar",
@@ -242,7 +439,21 @@
           "hp": 44,
           "atk": 58,
           "def": 44,
-          "spd": 61
+          "spd": 61,
+          "moves": [
+            {
+              "name": "Flame Wheel",
+              "type": "Fire"
+            },
+            {
+              "name": "Scratch",
+              "type": "Normal"
+            },
+            {
+              "name": "Ember",
+              "type": "Fire"
+            }
+          ]
         }
       ]
     },
@@ -318,7 +529,21 @@
           "hp": 35,
           "atk": 55,
           "def": 50,
-          "spd": 90
+          "spd": 90,
+          "moves": [
+            {
+              "name": "Volt tackle",
+              "type": "Electric"
+            },
+            {
+              "name": "Quick Attack",
+              "type": "Normal"
+            },
+            {
+              "name": "Iron Tail",
+              "type": "Steel"
+            }
+          ]
         }
       ]
     },
@@ -367,7 +592,21 @@
           "hp": 45,
           "atk": 115,
           "def": 55,
-          "spd": 95
+          "spd": 95,
+          "moves": [
+            {
+              "name": "Shadow Ball",
+              "type": "Ghost"
+            },
+            {
+              "name": "Lick",
+              "type": "Ghost"
+            },
+            {
+              "name": "Confuse Ray",
+              "type": "Ghost"
+            }
+          ]
         }
       ]
     }
