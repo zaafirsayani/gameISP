@@ -6,7 +6,17 @@
       "exits": {
         "north": "pol"
       },
-      "pokemons": []
+      "pokemons": [
+        {
+          "name": "",
+          "description": "",
+          "hp": 0,
+          "atk": 0,
+          "def": 0,
+          "spd": 0,
+          "moves": []
+        }
+      ]
 
     },
     "bruh": {
@@ -16,7 +26,17 @@
       "exits": {
         "north": "pol"
       },
-      "pokemons": []
+      "pokemons": [
+        {
+          "name": "",
+          "description": "",
+          "hp": 0,
+          "atk": 0,
+          "def": 0,
+          "spd": 0,
+          "moves": []
+        }
+      ]
     },
     "pol": {
       "name": "Professor Oak's Lab",
@@ -104,7 +124,17 @@
         "east": "beachsouth",
         "south": "pol"
       },
-      "pokemons": []
+      "pokemons": [
+        {
+          "name": "",
+          "description": "",
+          "hp": 0,
+          "atk": 0,
+          "def": 0,
+          "spd": 0,
+          "moves": []
+        }
+      ]
     },
     "forestclearing": {
       "name": "Forest Clearing",
@@ -258,6 +288,15 @@
         "north": "beachmiddle"
       },
       "pokemons": [
+        {
+          "name": "",
+          "description": "",
+          "hp": 0,
+          "atk": 0,
+          "def": 0,
+          "spd": 0,
+          "moves": []
+        }
       ]
     },
     "beachmiddle": {
@@ -345,7 +384,17 @@
         "south": "beachmiddle",
         "west": "volcanoeast"
       },
-      "pokemons": []
+      "pokemons": [
+        {
+          "name": "",
+          "description": "",
+          "hp": 0,
+          "atk": 0,
+          "def": 0,
+          "spd": 0,
+          "moves": []
+        }
+      ]
     },
     "volcanoeast": {
       "name": "Volcano East",
@@ -466,7 +515,17 @@
         "east": "volcanoeast",
         "north": "volcanonorth"
       },
-      "pokemons": []
+      "pokemons": [
+        {
+          "name": "",
+          "description": "",
+          "hp": 0,
+          "atk": 0,
+          "def": 0,
+          "spd": 0,
+          "moves": []
+        }
+      ]
     },
     
     "volcanonorth": {
@@ -478,7 +537,17 @@
         "west": "powerplant entrance",
         "east": "mansion west"
       },
-      "pokemons": []
+      "pokemons": [
+        {
+          "name": "",
+          "description": "",
+          "hp": 0,
+          "atk": 0,
+          "def": 0,
+          "spd": 0,
+          "moves": []
+        }
+      ]
     },
 
     "powerplant entrance": {
@@ -489,7 +558,17 @@
         "east": "volcanonorth",
         "west": "powerplant corridor"
       },
-      "pokemons": []
+      "pokemons": [
+        {
+          "name": "",
+          "description": "",
+          "hp": 0,
+          "atk": 0,
+          "def": 0,
+          "spd": 0,
+          "moves": []
+        }
+      ]
     },
 
     "powerplant bruh": {
@@ -500,7 +579,17 @@
         "east": "volcanonorth",
         "west": "powerplant corridor"
       },
-      "pokemons": []
+      "pokemons": [
+        {
+          "name": "",
+          "description": "",
+          "hp": 0,
+          "atk": 0,
+          "def": 0,
+          "spd": 0,
+          "moves": []
+        }
+      ]
     },
 
     "powerplant corridor": {
@@ -512,7 +601,17 @@
         "east": "powerplant entrance",
         "south": "powerplant control room"
       },
-      "pokemons": []
+      "pokemons": [
+        {
+          "name": "",
+          "description": "",
+          "hp": 0,
+          "atk": 0,
+          "def": 0,
+          "spd": 0,
+          "moves": []
+        }
+      ]
     },
 
     "powerplant office": {
@@ -556,7 +655,15 @@
         "north": "powerplant corridor"
       },
       "pokemons": [
-
+        {
+          "name": "",
+          "description": "",
+          "hp": 0,
+          "atk": 0,
+          "def": 0,
+          "spd": 0,
+          "moves": []
+        }
       ]
     },
 
@@ -565,7 +672,17 @@
       "description": "",
       "dialogue": "",
       "exits": {},
-      "pokemons": []
+      "pokemons": [
+        {
+          "name": "",
+          "description": "",
+          "hp": 0,
+          "atk": 0,
+          "def": 0,
+          "spd": 0,
+          "moves": []
+        }
+      ]
     },
 
     "mansion west": {
@@ -575,7 +692,17 @@
       "exits": {
         "west": "volcanonorth"
       },
-      "pokemons": []
+      "pokemons": [
+        {
+          "name": "",
+          "description": "",
+          "hp": 0,
+          "atk": 0,
+          "def": 0,
+          "spd": 0,
+          "moves": []
+        }
+      ]
     },
 
     "mansion living room": {
