@@ -42,10 +42,6 @@
             {
               "name": "Slash",
               "type": "Normal"
-            },
-            {
-              "name": "Dragon Claw",
-              "type": "Dragon"
             }
           ]
         },
@@ -64,10 +60,6 @@
             {
               "name": "Thrash",
               "type": "Normal"
-            },
-            {
-              "name": "Aqua Jet",
-              "type": "Water"
             }
           ]
         },
@@ -86,10 +78,6 @@
             {
               "name": "Razor Leaf",
               "type": "Grass"
-            },
-            {
-              "name": "Pound",
-              "type": "Normal"
             }
           ]
         }
@@ -132,10 +120,6 @@
             {
               "name": "Tackle",
               "type": "Normal"
-            },
-            {
-              "name": "Peck",
-              "type": "Flying"
             }
           ]
         }
@@ -146,8 +130,8 @@
       "description": "You are inside the forest. The trees are dense, and your path is narrow. You can hear the sounds of hidden yet watchful Pokemon all around you. The path you are on runs north-south.",
       "dialogue": "You can go south back to the clearing.",
       "exits": {
-        "south": "forestclearing",
-        "north": "forestnorth"
+        "north": "forestnorth",
+        "south": "forestclearing"
       },
       "pokemons": [
         {
@@ -161,10 +145,6 @@
             {
               "name": "Leaf Blade",
               "type": "Grass"
-            },
-            {
-              "name": "Shadow Ball",
-              "type": "Ghost"
             },
             {
               "name": "Headbutt",
@@ -187,10 +167,6 @@
             {
               "name": "String Shot",
               "type": "Bug"
-            },
-            {
-              "name": "Tackle",
-              "type": "Normal"
             }
           ]
         },
@@ -209,10 +185,6 @@
             {
               "name": "Tackle",
               "type": "Normal"
-            },
-            {
-              "name": "Peck",
-              "type": "Flying"
             }
           ]
         }
@@ -223,8 +195,8 @@
       "description": "You are at the northern end of the forest. The trees are getting sparse, and the chirping of Pokemon seems almost absent. A mysterious path leads east, seemingly out of the forest. You can also return south back to the middle of the forest.",
       "dialogue": "You can go east deeper into the woods, or south back to the middle of the forest.",
       "exits": {
-        "south": "forestmiddle",
-        "east": "volcanowest"
+        "east": "volcanowest",
+        "south": "forestmiddle"
       },
       "pokemons": [
         {
@@ -242,10 +214,6 @@
             {
               "name": "String Shot",
               "type": "Bug"
-            },
-            {
-              "name": "Tackle",
-              "type": "Normal"
             }
           ]
         }
@@ -256,8 +224,8 @@
       "description": "You come to the beach. The waves are crashing against the shore, and a few Pokemon are playing in the water. A path leads roughly west back to the town.",
       "dialogue": "",
       "exits": {
-        "west": "town north",
-        "north": "beachmiddle"
+        "north": "beachmiddle",
+        "west": "town north"        
       },
       "pokemons": [
       ]
@@ -267,8 +235,8 @@
       "description": "You are in the middle of Whirlpool Beach. The water is calm here, and the Pokemon are easier to see now. A path leads east back to the south of the beach.",
       "dialogue": "You can go east back to the south of the beach.",
       "exits": {
-        "south": "beachsouth",
-        "north": "beachnorth"
+        "north": "beachnorth",
+        "south": "beachsouth"        
       },
       "pokemons": [
         {
@@ -282,10 +250,6 @@
             {
               "name": "Water Gun",
               "type": "Water"
-            },
-            {
-              "name": "Tackle",
-              "type": "Normal"
             },
             {
               "name": "Mud-Slap",
@@ -308,10 +272,6 @@
             {
               "name": "Quick Attack",
               "type": "Normal"
-            },
-            {
-              "name": "Water Pulse",
-              "type": "Water"
             }
           ]
         },
@@ -330,10 +290,6 @@
             {
               "name": "Thrash",
               "type": "Normal"
-            },
-            {
-              "name": "Aqua Jet",
-              "type": "Water"
             }
           ]
         }
@@ -344,8 +300,8 @@
       "description": "You are at the northern end of Whirlpool Beach. The water is deeper here. A mysterious path through impenetrable woods leads west, and a path leads south back to the middle of the beach.",
       "dialogue": "You can go west through the woods, or south back to the middle of the beach.",
       "exits": {
-        "south": "beachmiddle",
-        "west": "volcanoeast"
+        "west": "volcanoeast",
+        "south": "beachmiddle"        
       },
       "pokemons": [
  
@@ -373,10 +329,6 @@
               "type": "Fire"
             },
             {
-              "name": "Quick Attack",
-              "type": "Normal"
-            },
-            {
               "name": "Flame Charge",
               "type": "Fire"
             }
@@ -391,15 +343,11 @@
           "spd": 60,
           "moves": [
             {
-              "name": "Bite",
-              "type": "Dark"
-            },
-            {
               "name": "Flame Wheel",
               "type": "Fire"
             },
             {
-              "name": "Roar",
+              "name": "Bite",
               "type": "Normal"
             }
           ]
@@ -428,10 +376,6 @@
               "type": "Fire"
             },
             {
-              "name": "Quick Attack",
-              "type": "Normal"
-            },
-            {
               "name": "Flame Charge",
               "type": "Fire"
             }
@@ -452,10 +396,6 @@
             {
               "name": "Scratch",
               "type": "Normal"
-            },
-            {
-              "name": "Ember",
-              "type": "Fire"
             }
           ]
         }
@@ -466,9 +406,9 @@
       "description": "You enter a dark cave inside the volcano. The walls are hot to the touch, and you can hear the sound of bubbling lava nearby. The air smells of sulfur and ash. A faint light glows from the north, and two exits are to the east and west.",
       "dialogue": "",
       "exits": {
+        "north": "volcanonorth",
         "west": "volcanowest",
-        "east": "volcanoeast",
-        "north": "volcanonorth"
+        "east": "volcanoeast"        
       },
       "pokemons": [
 
@@ -480,9 +420,9 @@
       "description": "Emerging from the caves, you find yourself at the northern end of the volcano. A formidable mountain range stands before you, stretching for who knows how long. The mountains, immovable guardians of whatever is beyond, watch over you. You sweat at the thought of attempting to climb the steep rocks. \nA path leads roughly west-east here. Behind you to the south is Cinnabar Volcano.",
       "dialogue": "",
       "exits": {
-        "south": "volcanocaves",
         "west": "powerplant entrance",
-        "east": "mansion west"
+        "east": "mansion west",
+        "south": "volcanocaves"
       },
       "pokemons": [
 
@@ -494,21 +434,22 @@
       "description": "You arrive at the gates of an old power plant, a complex filled with large buildings of unfamiliar shapes. Some sparks fly from the power lines. The plaque at the front reads \"Dynavolt Power Plant\". Go west into the facility, or east back to the volcano.",
       "dialogue": "",
       "exits": {
-        "east": "volcanonorth",
-        "west": "powerplant corridor"
+        "west": "powerplant corridor",
+        "east": "volcanonorth"        
       },
       "pokemons": [
 
       ]
     },
 
-    "powerplant bruh": {
+    "powerplant entrance unlocked": {
       "name": "Gates of Dynavolt Power Plant",
-      "description": "Why are you here again? Too scared to explore the complex? Go back west into the facility!",
-      "dialogue": "Why are you here again? Too scared to explore the complex?",
+      "description": "After exploring the power plant a bit, you spot a path leading north that you didn't see before. The gates of the power plant are still open to the west, and you remember the volcano is to the east.",
+      "dialogue": "",
       "exits": {
-        "east": "volcanonorth",
-        "west": "powerplant corridor"
+        "north": "den entrance from powerplant",
+        "west": "powerplant corridor 2",
+        "east": "volcanonorth"
       },
       "pokemons": [
 
@@ -522,7 +463,23 @@
       "exits": {
         "north": "powerplant office",
         "east": "powerplant entrance",
-        "south": "powerplant control room"
+        "south": "powerplant control room",
+        "west": "powerplant generator"
+      },
+      "pokemons": [
+
+      ]
+    },
+
+    "powerplant corridor 2": {
+      "name": "Power Plant Corridor",
+      "description": "You are in a long corridor that runs east-west. The walls are lined with depictions of strange machinery, and the air is filled with strange odours. \nBefore you are two doors: one to the north, and another to the south. The corridor continues west.",
+      "dialogue": "",
+      "exits": {
+        "north": "powerplant office",
+        "east": "powerplant entrance unlocked",
+        "south": "powerplant control room",
+        "west": "powerplant generator"
       },
       "pokemons": [
 
@@ -534,7 +491,7 @@
       "description": "As you enter the office, you hear momentarily the squeal of a pokemon that must have been startled by your entry and gone to hide. The office has multiple chairs and computers. A door leads south back to the corridor.",
       "dialogue": "I'm not here to help, this is your journey!",
       "exits": {
-        "south": "powerplant corridor"
+        "south": "powerplant corridor 2"
       },
       "pokemons": [
         {
@@ -550,10 +507,6 @@
               "type": "Electric"
             },
             {
-              "name": "Quick Attack",
-              "type": "Normal"
-            },
-            {
               "name": "Iron Tail",
               "type": "Steel"
             }
@@ -567,19 +520,56 @@
       "description": "You enter a dark room filled with buttons and dials. A buzzing sound permeates this space.",
       "dialogue": "",
       "exits": {
-        "north": "powerplant corridor"
+        "north": "powerplant corridor 2"
       },
       "pokemons": [
-
+        {
+          "name": "Magnemite",
+          "description": "A small, floating, metallic Pokemon with a magnet on its head. It is known for its ability to generate electricity.",
+          "hp": 25,
+          "atk": 35,
+          "def": 70,
+          "spd": 45,
+          "moves": [
+            {
+              "name": "Thunder Shock",
+              "type": "Electric"
+            },
+            {
+              "name": "Metal Boom",
+              "type": "Steel"
+            }
+          ]
+        }
       ]
     },
 
     "powerplant generator": {
       "name": "Dynavolt Generator Room",
-      "description": "",
+      "description": "You enter a large room filled with humming machinery and mysterious contraptions. You can almost smell the electricity, what with sparks flying from the machines. A door leads east back to the corridor.",
       "dialogue": "",
-      "exits": {},
+      "exits": {
+        "east": "powerplant corridor 2"
+      },
       "pokemons": [
+        {
+          "name": "Electabuzz",
+          "description": "A yellow, electric Pokemon with black stripes. It is known for its speed, and it has the incredible ability to generate electric charge.",
+          "hp": 65,
+          "atk": 83,
+          "def": 57,
+          "spd": 105,
+          "moves": [
+            {
+              "name": "Thunder Punch",
+              "type": "Electric"
+            },
+            {
+              "name": "Quick Attack",
+              "type": "Normal"
+            }
+          ]
+        }
       ]
     },
 
@@ -588,20 +578,102 @@
       "description": "You arrive at the door of a large, old mansion. The windows are broken, and the door is slightly ajar. The sign in front that would have declared the house's name long ago is now illegible. A chill runs through you. Go east into the mansion, or west back to the volcano.",
       "dialogue": "Spooky, right?",
       "exits": {
-        "west": "volcanonorth"
-        
+        "west": "volcanonorth",
+        "east": "mansion living room"
+      },
+      "pokemons": []
+    },
+
+    "mansion west unlocked": {
+      "name": "Mansion West",
+      "description": "After bravely exploring the mansion, you spot a path leading north that you didn't see before. The door of the mansion is still open to the east, and you remember the volcano is to the west.",
+      "dialogue": "Ooh, could this be a sign?",
+      "exits": {
+        "north": "den entrance from mansion",
+        "west": "volcanonorth",
+        "east": "mansion living room"
       },
       "pokemons": []
     },
 
     "mansion living room": {
       "name": "Mansion Living Room",
-      "description": "You enter a large living room filled with old furniture covered in dust and cobwebs. The only light comes from a few flickering candles, and a mysterious wind seems to be moving through the room. A door leads east back to the mansion west.",
-      "dialogue": "You can go east back to the mansion west.",
+      "description": "You enter a large living room filled with old furniture covered in dust and cobwebs. The only light comes from a few flickering candles, and a mysterious wind seems to be moving through the room. A shaky, flaky door leads east to the next room.",
+      "dialogue": "Exit's to the west... if you're too scared to continue.",
       "exits": {
-        "east": "mansion west"
+        "west": "mansion west unlocked",
+        "east": "mansion kitchen"
       },
       "pokemons": [
+        {
+          "name": "Haunter",
+          "description": "A ghostly Pokemon that floats in the air. It has a mischievous grin and is known for its malice. Some say it feeds on the pain and suffering of other Pokemon.",
+          "hp": 45,
+          "atk": 115,
+          "def": 55,
+          "spd": 95,
+          "moves": [
+            {
+              "name": "Shadow Ball",
+              "type": "Ghost"
+            },
+            {
+              "name": "Confuse Ray",
+              "type": "Ghost"
+            }
+          ]
+        },
+        {
+          "name": "Mimikyu",
+          "description": "A ghostly Pokemon that wears a disguise to look like Pikachu. It is shy and desire to be loved.",
+          "hp": 55,
+          "atk": 90,
+          "def": 80,
+          "spd": 96,
+          "moves": [
+            {
+              "name": "Play Rough",
+              "type": "Fairy"
+            },
+            {
+              "name": "Shadow Sneak",
+              "type": "Ghost"
+            }
+          ]
+        }
+      ]
+    },
+
+    "mansion kitchen": {
+      "name": "Mansion Kitchen",
+      "description": "You enter a large kitchen filled with old, rusty appliances. The air is thick with the smell of decay, and you barely hear the sound of rats scurrying around. A door leads west back to the living room.",
+      "dialogue": "You can go west back to the living room.",
+      "exits": {
+        "west": "mansion living room"
+      },
+      "pokemons": [
+        {
+          "name": "Rattata",
+          "description": "A small purple rodent-like Pokemon with sharp teeth. It is known for its speed and agility.",
+          "hp": 30,
+          "atk": 56,
+          "def": 35,
+          "spd": 72,
+          "moves": [
+            {
+              "name": "Quick Attack",
+              "type": "Normal"
+            },
+            {
+              "name": "Bite",
+              "type": "Dark"
+            },
+            {
+              "name": "Hyper Fang",
+              "type": "Normal"
+            }
+          ]
+        },
         {
           "name": "Haunter",
           "description": "A ghostly Pokemon that floats in the air. It has a mischievous grin and is known for its malice. Some say it feeds on the pain and suffering of other Pokemon.",
@@ -621,6 +693,116 @@
             {
               "name": "Confuse Ray",
               "type": "Ghost"
+            }
+          ]
+        }
+      ]
+    },
+
+    "den entrance from powerplant": {
+      "name": "Dragon Den Entrance",
+      "description": "You arrive at the entrance of a large cave. The mouth of the cave is almost like the gaping jaw of a beast, and the cool wind blowing out from within seems to warn you of everything formidable inside. A sign in front reads \"DANGER: DRAGONS\". Go north into the cave, or south back to Dynavolt Power Plant.",
+      "dialogue": "",
+      "exits": {
+        "north": "dragon cavern",
+        "south": "powerplant entrance unlocked"
+      },
+      "pokemons": []
+    },
+
+    "den entrance from mansion": {
+      "name": "Dragon Den Entrance",
+      "description": "You arrive at the entrance of a large cave. The mouth of the cave is almost like the gaping jaw of a beast, and the cool wind blowing out from within seems to warn you of everything formidable inside. A sign in front reads \"DANGER: DRAGONS\". Go north into the cave, or south back to the haunted mansion.",
+      "dialogue": "",
+      "exits": {
+        "north": "dragon cavern",
+        "south": "mansion west unlocked"
+      },
+      "pokemons": []
+    },
+
+    "dragon cavern": {
+      "name": "Dragon Cavern",
+      "description": "You enter a dark, damp cave echoing with the sound of dripping water. \nSuddenly, the entrance behind you has collapsed to the ground. \nTorches light themselves up around the cave. Now you can see: this is a big circular chamber with its walls covered in strange markings. Three gaping paths present themselves before you: one roughly to the west, one to the north, and one roughly to the east. The northward path is closed off by a boulder. \nYou can already feel the presence of a Pokemon circling around in the dark, watching you.",
+      "dialogue": "...Maybe you can search for a dragon here?",
+      "exits": {
+        "west": "dragonite lair",
+        "east": "garchomp lair"
+      },
+      "pokemons": [
+        {
+          "name": "Dragonair",
+          "description": "A long, serpentine dragon Pokemon with a blue body and white fins. It is known for its grace and power.",
+          "hp": 61,
+          "atk": 84,
+          "def": 70,
+          "spd": 70,
+          "moves": [
+            {
+              "name": "Dragon Pulse",
+              "type": "Dragon"
+            },
+            {
+              "name": "Aqua Tail",
+              "type": "Water"
+            }
+          ]
+        }
+      ]
+    },
+
+    "dragonite lair": {
+      "name": "Dragon Lair",
+      "description": "You enter a large, dark cave with scratch marks on the walls. You see a resting dragon. Search to engage it. The main cavern is behind you to the east.",
+      "dialogue": "No turning back now, Ash!",
+      "exits": {
+        "east": "dragon cavern"
+      },
+      "pokemons": [
+        {
+          "name": "Dragonite",
+          "description": "A large, powerful dragon Pokemon with orange scales and large wings. It is known for its strength and speed.",
+          "hp": 91,
+          "atk": 134,
+          "def": 95,
+          "spd": 80,
+          "moves": [
+            {
+              "name": "Dragon Claw",
+              "type": "Dragon"
+            },
+            {
+              "name": "Air Slash",
+              "type": "Flying"
+            }
+          ]
+        }
+      ]
+    },
+
+    "garchomp lair": {
+      "name": "Garchomp Lair",
+      "description": "You enter a large, dark cave with wide cracks on the walls. You see a resting dragon. Search to engage it. The main cavern is behind you to the west.",
+      "dialogue": "No turning back now, Ash!",
+      "exits": {
+        "west": "dragon cavern"
+      },
+      "pokemons": [
+        {
+          "name": "Garchomp",
+          "description": "A large, powerful dragon Pokemon with blue scales and sharp teeth. It is known for its strength and speed.",
+          "hp": 108,
+          "atk": 130,
+          "def": 95,
+          "spd": 102,
+          "moves": [
+            {
+              "name": "Dragon Rush",
+              "type": "Dragon"
+            },
+            {
+              "name": "Earthquake",
+              "type": "Ground"
             }
           ]
         }
