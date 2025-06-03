@@ -35,18 +35,29 @@ public class RoomLoader {
                     int pokeAttack = pokeObj.get("atk").getAsInt();
                     int pokeDefense = pokeObj.get("def").getAsInt();
                     int pokeSpeed = pokeObj.get("spd").getAsInt();
+
+                    JsonArray movesArr = pokeObj.getAsJsonArray("moves");
+                    List<Moves> movesList = new ArrayList<>();
+
+                    for(int i = 0; i < movesArr.size(); i++){
+                        JsonObject moveObj = movesArr.get(i).getAsJsonObject();
+                        String moveName = moveObj.get("name").getAsString();
+                        String moveType = moveObj.get("type").getAsString();
+                        movesList.add(new Moves(moveName, moveType));
+                    }
+
+                        // Fallbacks if there are fewer than 2 moves (optional depending on how your game handles it)
+                        Moves m1 = movesList.size() > 0 ? movesList.get(0) : new Moves("Tackle", "Normal");
+                        Moves m2 = movesList.size() > 1 ? movesList.get(1) : new Moves("Growl", "Normal");
+
+
                     
-                    JsonObject move1Obj = pokeObj.getAsJsonObject("move1");
-                    JsonObject move2Obj = pokeObj.getAsJsonObject("move2");
+                    
+                    
 
-                    String m1n = move1Obj.get("name").getAsString();
-                    String m2n = move2Obj.get("name").getAsString();
+                    
 
-                    String m1t = move1Obj.get("type").getAsString();
-                    String m2t = move2Obj.get("type").getAsString();
-
-                    Moves m1 = new Moves(m1n, m1t);
-                    Moves m2 = new Moves(m2n, m2t);
+                    
 
 
                     

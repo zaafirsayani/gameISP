@@ -14,6 +14,7 @@ public class Pokemon {
         this.atk = atk;
         this.def = def;
         this.hp = hp;
+        int maxhp = hp;
         this.spd = spd;
         this.name = name;
         this.description = description;
@@ -39,6 +40,22 @@ public class Pokemon {
 
     public int getSpd() {
         return spd;
+    }
+
+    public String getm1(){
+        return m1.getName();
+    }
+
+    public String getm2(){
+        return m2.getName();
+    }
+
+    public Moves getMove1(){
+        return m1;
+    }
+
+    public Moves getMove2(){
+        return m2;
     }
 
     public String getDescription() {

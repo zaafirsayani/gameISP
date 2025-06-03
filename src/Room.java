@@ -50,6 +50,8 @@ public class Room {
         pokemons.add(item);
     }
 
+    
+
     public String getLongDescription() {
         StringBuilder sb = new StringBuilder();
         sb.append(name).append("\n");

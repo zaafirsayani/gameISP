@@ -1,7 +1,25 @@
 import java.util.Map;
 
 public class CommandParser {
+
+
+    private boolean isCombat = false;
+    private Fight currentFight;
+
+    public void startCombat(Fight fight){
+        fight.startBattle();
+        isCombat = true;
+    }
+
+    public void endCombat(){
+        isCombat = false;
+        currentFight = null;
+    }
+
+    
+
     public void parse(String input, Player player, Map<String, Room> rooms) {
+
         String[] words = input.trim().toLowerCase().split("\\s+");
         if (words.length == 0) {
             System.out.println("Sorry, what was that?");
@@ -10,7 +28,69 @@ public class CommandParser {
 
         String command = words[0];
 
+        if(isCombat){
+            switch (command) {
+
+                case "check":
+                    currentFight.repStats();
+                    break;
+                case "switch":
+                    if (words.length < 2) {
+                        System.out.println("Switch to who?");
+                    } else {
+                        currentFight.switchPokemon();
+                    }
+                break;
+                case "attack":
+                    if (words.length < 2) {
+                        System.out.println("Which move? Try one of: " + currentFight.getActive().getm1() + " or " + currentFight.getActive().getm1());
+                    } else {
+                        String moveName = words[1];
+                        Moves selectedMove = null;
+                        if (currentFight.getActive().getm1().equalsIgnoreCase(moveName)) {
+                            selectedMove = currentFight.getActive().getMove1();
+                        } else if (currentFight.getActive().getm2().equalsIgnoreCase(moveName)) {
+                            selectedMove = currentFight.getActive().getMove2();
+                        } else {
+                            System.out.println("Invalid move name.");
+                            return;
+                        }
+                        currentFight.attack(currentFight.getActive(), currentFight.getChallenger(), selectedMove);
+                }
+                break;
+                case "catch":
+                    if(currentFight.attemptCatch()){
+                        endCombat();
+                }
+                break;
+
+                
+            }
+
+            if(currentFight != null && currentFight.getChallenger().getHp() <= 0){
+                System.out.println(currentFight.getChallengerName() + " fainted! You Win! You can now continue.");
+                endCombat();
+            } else if(currentFight != null && currentFight.getActive().getHp() <= 0){
+                System.out.println("Your Pokemon Fainted!");
+                currentFight.getSurvivors().remove(currentFight.getActive());
+                if(currentFight.getSurvivors().size() <= 0){
+                    System.out.println("All your Pokemon have fainted! You lose!");
+                    endCombat();
+                }
+
+            }
+            return;
+
+            }
+            
+
+            
+        
+
+        
+
         switch (command) {
+
             case "go":
                 if (words.length < 2) {
                     System.out.println("Go where?");
@@ -97,20 +177,16 @@ public class CommandParser {
                 int randomIndex = (int) (Math.random() * (pokeCount + 1));
                 if (randomIndex < pokeCount) {
                     Pokemon foundPokemon = currentRoom.get().get(randomIndex);
-                    player.addItem(foundPokemon);
+                
                     currentRoom.removeItem(foundPokemon);
-                    System.out.println("You found a " + foundPokemon.getName() + "!");
-                    System.out.println(
-                        foundPokemon.getName() + "\n" +
-                        foundPokemon.getDescription() + "\n" +
-                        "Health: " + foundPokemon.getHp() + "\n" +
-                        "Attack: " + foundPokemon.getAtk() + "\n" +
-                        "Defense: " + foundPokemon.getDef() + "\n" +
-                        "Speed: " + foundPokemon.getSpd()
-                    );
+                    currentFight = new Fight(player, foundPokemon);
+                    startCombat(currentFight);
+                    
                 } else {
                     System.out.println("You find nothing of interest.");
                 }
+
+
                 break;
             case "Charmander", "charmander":
                 currentRoom = rooms.get(player.getCurrentRoomId());
@@ -193,3 +269,4 @@ public class CommandParser {
         }
     }
 }
+
