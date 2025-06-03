@@ -356,7 +356,7 @@
       "description": "Emerging from the woods, a giant volcano looms into view. The ground before you is rocky and uneven; the air is hot and filled with a putrid smell. You recognize this as the famous Cinnabar Volcano, known for its fiery Pokemon and treacherous terrain. Go west onto the volcano, or go east back to the beach.",
       "dialogue": "You can go west onto the volcano, or east back to the beach.",
       "exits": {
-        "west": "volcanocave",
+        "west": "volcanocaves",
         "east": "beachnorth"
       },
       "pokemons": [

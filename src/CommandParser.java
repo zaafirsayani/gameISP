@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Map;
 
 public class CommandParser {
@@ -7,6 +8,7 @@ public class CommandParser {
     private Fight currentFight;
 
     public void startCombat(Fight fight){
+        this.currentFight = fight;
         fight.startBattle();
         isCombat = true;
     }
@@ -43,9 +45,9 @@ public class CommandParser {
                 break;
                 case "attack":
                     if (words.length < 2) {
-                        System.out.println("Which move? Try one of: " + currentFight.getActive().getm1() + " or " + currentFight.getActive().getm1());
+                        System.out.println("Which move? Try one of: " + currentFight.getActive().getm1() + " or " + currentFight.getActive().getm2());
                     } else {
-                        String moveName = words[1];
+                        String moveName = String.join(" ", Arrays.copyOfRange(words, 1, words.length));
                         Moves selectedMove = null;
                         if (currentFight.getActive().getm1().equalsIgnoreCase(moveName)) {
                             selectedMove = currentFight.getActive().getMove1();
@@ -174,6 +176,10 @@ public class CommandParser {
                         pokeCount++;
                     }
                 }
+                if(pokeCount == 0){
+                    System.out.println("There are either no pokemon in this room or you've found all the ones inside it!");
+                    return;
+                }
                 int randomIndex = (int) (Math.random() * (pokeCount + 1));
                 if (randomIndex < pokeCount) {
                     Pokemon foundPokemon = currentRoom.get().get(randomIndex);
@@ -186,7 +192,7 @@ public class CommandParser {
                     
                     
                 } else {
-                    System.out.println("You find nothing of interest.");
+                    System.out.println("You find nothing of interest... yet. Try searching again!");
                 }
 
 

@@ -30,11 +30,12 @@ public class Fight {
         for(int i = 0; i < currentParty.size(); i++){
             System.out.println((i + 1) + ". " + currentParty.get(i).getName());
         }
-
+        
+        Scanner scanner = new Scanner(System.in);
         int choice = -1;
         while (choice < 1 || choice > currentParty.size()) {
             try {
-                choice = Integer.parseInt(System.console().readLine());
+                choice = Integer.parseInt(scanner.nextLine());
             } catch (Exception e) {
                 choice = -1;
             }
@@ -88,6 +89,11 @@ public class Fight {
     }
 
     public boolean attemptCatch(){
+
+        if(player.getInventory().size() == 3){
+            System.out.println("You already have 3 Pokemon! You can't catch another!");
+            return false;
+        }
 
         player.addItem(challenger);
                     
