@@ -89,7 +89,7 @@ public class CommandParser {
 
         
 
-        switch (command) {
+        switch (command) {  
 
             case "go":
                 if (words.length < 2) {
@@ -178,10 +178,11 @@ public class CommandParser {
                 if (randomIndex < pokeCount) {
                     Pokemon foundPokemon = currentRoom.get().get(randomIndex);
 
-                    startCombat(currentFight);
+                    
                 
                     currentRoom.removeItem(foundPokemon);
                     currentFight = new Fight(player, foundPokemon);
+                    startCombat(currentFight);
                     
                     
                 } else {
