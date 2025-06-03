@@ -46,27 +46,18 @@ public class RoomLoader {
                         movesList.add(new Moves(moveName, moveType));
                     }
 
-                        // Fallbacks if there are fewer than 2 moves (optional depending on how your game handles it)
-                        Moves m1 = movesList.size() > 0 ? movesList.get(0) : new Moves("Tackle", "Normal");
-                        Moves m2 = movesList.size() > 1 ? movesList.get(1) : new Moves("Growl", "Normal");
+                    // Fallbacks if there are fewer than 2 moves (optional depending on how your game handles it)
+                    Moves m1 = movesList.size() > 0 ? movesList.get(0) : new Moves("Tackle", "Normal");
+                    Moves m2 = movesList.size() > 1 ? movesList.get(1) : new Moves("Growl", "Normal");
 
 
-                    
-                    
-                    
-
-                    
-
-                    
-
-
-                    
                     pokeList.add(new Pokemon(pokeName, pokeDescription, pokeHealth, pokeAttack, pokeDefense, pokeSpeed, m1, m2));
-                    // String name, int atk, int def, int hp, int spd
+                    
                 }
 
                 Room room = new Room(roomId, name, description, exits, pokeList, dialogue);
                 rooms.put(roomId, room);
+                
             }
         } catch (Exception e) {
             e.printStackTrace();

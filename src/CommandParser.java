@@ -177,10 +177,12 @@ public class CommandParser {
                 int randomIndex = (int) (Math.random() * (pokeCount + 1));
                 if (randomIndex < pokeCount) {
                     Pokemon foundPokemon = currentRoom.get().get(randomIndex);
+
+                    startCombat(currentFight);
                 
                     currentRoom.removeItem(foundPokemon);
                     currentFight = new Fight(player, foundPokemon);
-                    startCombat(currentFight);
+                    
                     
                 } else {
                     System.out.println("You find nothing of interest.");
