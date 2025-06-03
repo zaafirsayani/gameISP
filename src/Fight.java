@@ -95,6 +95,7 @@ public class Fight {
             return false;
         }
 
+        
         player.addItem(challenger);
                     
         System.out.println("You found a " + challenger.getName() + "!");

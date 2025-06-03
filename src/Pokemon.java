@@ -6,15 +6,17 @@ public class Pokemon {
     private int atk;
     private int def;
     private int hp;
+    private int maxhp;
     private int spd;
     private Moves m1;
     private Moves m2;
+
 
     public Pokemon(String name, String description, int atk, int def, int hp, int spd, Moves move1, Moves move2) {
         this.atk = atk;
         this.def = def;
         this.hp = hp;
-        int maxhp = hp;
+        final int maxhp = hp;
         this.spd = spd;
         this.name = name;
         this.description = description;
@@ -60,6 +62,14 @@ public class Pokemon {
 
     public String getDescription() {
         return description;
+    }
+
+    public void setHp(int newHP){
+        hp = newHP;
+    }
+
+    public int getMaxHp(){
+        return maxhp;
     }
 
     public void receiveDmg(int damage){

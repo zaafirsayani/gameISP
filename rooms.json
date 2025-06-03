@@ -589,6 +589,7 @@
       "dialogue": "Spooky, right?",
       "exits": {
         "west": "volcanonorth"
+        
       },
       "pokemons": []
     },
