@@ -80,16 +80,18 @@ public class Fight {
 
     public void attack(Pokemon attacker, Pokemon victim, Moves move){
 
-        victim.receiveDmg(attacker.getAtk());
+       victim.receiveDmg(attacker.getAtk());
         System.out.println(attacker.getName() + " used " + move.getName() + " and dealt " + attacker.getAtk() + " damage!");
-
+ 
         if(victim.getHp() > 0){
         Moves enemyMove = Math.random() < 0.5 ? challenger.getMove1() : challenger.getMove2();
         System.out.println("The wild " + victim.getName() + " attacks!");
-        
+       
         playerCurrent.receiveDmg(victim.getAtk());
         System.out.println(victim.getName() + " used" + enemyMove.getName() + " and dealt " + victim.getAtk() + " damage!");
         }
+ 
+ 
         
     }
 
