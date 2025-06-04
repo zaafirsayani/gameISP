@@ -1,4 +1,12 @@
 {
+    "pokecentre": {
+      "name": "Pokemon Centre",
+      "description": "You arrive in the Pokemon Centre, back at Pallet Town. The walls are painted a soothing blue, the floor is clean, and the room is well-lit with gentle lights. A nurse is behind the counter, ready to help you with your Pokemon.",
+      "dialogue": "Nurse: Hi, welcome to the Pokemon Centre! Let's heal your Pokemon! We can send you back where you were before whenever you're ready. Just say \"return\".",
+      "exits": {
+      },
+      "pokemons": []
+    },
     "start": {
       "name": "Pallet Town",
       "description": "Your name is Ash. You have just landed in Pallet Town: a coastal town on an island well-known for its diversity of Pokemon, the first stop for all aspiring Pokemon trainers in the Kanto region. \nThe island is surrounded by a beautiful ocean, and the sun is shining brightly. You see a few houses and a small lab in the distance.", 
@@ -21,7 +29,7 @@
     "pol": {
       "name": "Professor Oak's Lab",
       "description": "Filled with pieces of research equipment you could never name, the lab of Professor Oak is humming with a low note. Professor Oak sits at his desk, awaiting your arrival.",
-      "dialogue":  "Hello Ash! You seem ready to start your journey. I've been awaiting a new trainer for a very long time. I believe you are ready to choose your first Pokemon. You can choose between Charmander, Squirtle, or Bulbasaur!",
+      "dialogue":  "Prof. Oak: Hello Ash! You seem ready to start your journey. I've been awaiting a new trainer for a very long time. I believe you are ready to choose your first Pokemon. You can choose between Charmander, Squirtle, or Bulbasaur!",
       "exits":{
         "north": "town north",
         "south": "bruh"
