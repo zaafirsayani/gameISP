@@ -180,7 +180,7 @@ public class CommandParser {
                 if (player.getCurrentRoomId().equals("pokecentre")) {
                     player.setCurrentRoomId(resumeRoomId);
                     currentRoom = rooms.get(resumeRoomId);
-                    System.out.println("You have been healed and returned to " + currentRoom.getName() + ".");
+                    System.out.println("Your Pokemon have been healed and returned to " + currentRoom.getName() + ".");
                     System.out.println(currentRoom.getLongDescription());
                 }
                 break;
