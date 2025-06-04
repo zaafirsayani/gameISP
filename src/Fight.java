@@ -15,7 +15,7 @@ public class Fight {
         this.challenger = challenger;
         this.currentParty = player.getInventory();
 
-        choosePokemon();
+        
     }
 
     public boolean isOver(){
@@ -84,6 +84,8 @@ public class Fight {
 
     public void attack(Pokemon attacker, Pokemon victim, Moves move){
 
+        
+
        victim.receiveDmg(attacker.getAtk());
         System.out.println(attacker.getName() + " used " + move.getName() + " and dealt " + attacker.getAtk() + " damage!");
  
@@ -92,10 +94,9 @@ public class Fight {
         System.out.println("The wild " + victim.getName() + " attacks!");
        
         playerCurrent.receiveDmg(victim.getAtk());
-        System.out.println(victim.getName() + " used" + enemyMove.getName() + " and dealt " + victim.getAtk() + " damage!");
+        System.out.println(victim.getName() + " used " + enemyMove.getName() + " and dealt " + victim.getAtk() + " damage!");
         }
- 
- 
+        
         
     }
 
@@ -116,7 +117,9 @@ public class Fight {
             "Health: " + challenger.getHp() + "\n" +
             "Attack: " + challenger.getAtk() + "\n" +
             "Defense: " + challenger.getDef() + "\n" +
-            "Speed: " + challenger.getSpd()
+            "Speed: " + challenger.getSpd() + "\n" +
+            "Move 1: " + challenger.getm1() + "\n" + 
+            "Move 2: " + challenger.getm2()
         );
 
         return true;

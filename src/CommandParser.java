@@ -12,11 +12,20 @@ public class CommandParser {
         this.currentFight = fight;
         fight.startBattle();
         isCombat = true;
+        fight.choosePokemon();
+        System.out.println(
+            "WHAT WILL YOU DO?" + "\n" +
+            "1. ATTACK [attack + MoveName (e.g. attack slash)]" + "\n" +
+            "2. CHECK STATS [check]" + "\n" + 
+            "3. SWITCH POKEMON [switch -number-]" + "\n" + 
+            "4. CATCH [catch]"
+            );
     }
 
     public void endCombat() {
         isCombat = false;
         currentFight = null;
+        System.out.println("You Win! You can now continue. Try searching again or moving someplace else!");
     }
 
     public void parse(String input, Player player, Map<String, Room> rooms) {
@@ -64,14 +73,22 @@ public class CommandParser {
                 case "catch": // Attempts to catch the opponent's Pokemon
                     if (currentFight.attemptCatch()) {
                         endCombat();
-                    }
-                    break;
+                }
+                break;
+                default: 
+                    System.out.println(
+                        "WHAT WILL YOU DO?" + "\n" +
+                        "1. ATTACK [attack + MoveName (e.g. attack slash)]" + "\n" +
+                        "2. CHECK STATS [check]" + "\n" + 
+                        "3. SWITCH POKEMON [switch -number-]" + "\n" + 
+                        "4. CATCH [catch]"
+                    );
 
+                
             }
 
-            if (currentFight != null && currentFight.getChallenger().getHp() <= 0) {
-                // The opponent's Pokemon fainted and the player wins
-                System.out.println(currentFight.getChallengerName() + " fainted! You Win! You can now continue.");
+            if(currentFight != null && currentFight.getChallenger().getHp() <= 0){
+                System.out.println(currentFight.getChallengerName() + " fainted!");
                 endCombat();
             } else if (currentFight != null && currentFight.getActive().getHp() <= 0) {
                 // The player's active Pokemon fainted
@@ -83,10 +100,7 @@ public class CommandParser {
                     resumeRoomId = player.getCurrentRoomId(); // Save the room ID to return to after healing
                     player.setCurrentRoomId("pokecentre");
                     for (Pokemon pokemon : player.getInventory()) {
-                        System.out.println("Healing " + pokemon.getName() + " from " + pokemon.getHp() + " to "
-                                + pokemon.getMaxHp());
                         pokemon.setHp(pokemon.getMaxHp());
-                        System.out.println("After healing: " + pokemon.getHp());
                     }
                     currentRoom = rooms.get("pokecentre");
                     System.out.println(rooms.get("pokecentre").getLongDescription());
@@ -192,10 +206,7 @@ public class CommandParser {
                         return;
                     }
                     for (Pokemon pokemon : player.getInventory()) {
-                        System.out.println("Healing " + pokemon.getName() + " from " + pokemon.getHp() + " to "
-                                + pokemon.getMaxHp());
                         pokemon.setHp(pokemon.getMaxHp());
-                        System.out.println("After healing: " + pokemon.getHp());
                     }
                     player.setCurrentRoomId(resumeRoomId);
                     currentRoom = rooms.get(resumeRoomId);
