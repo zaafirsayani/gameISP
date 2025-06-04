@@ -76,9 +76,7 @@ public class Pokemon {
         hp -= damage;
     }
 
-    public boolean isFainted(){
-        return hp <= 0;
-    }
+    
 
 
 

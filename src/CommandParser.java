@@ -78,7 +78,10 @@ public class CommandParser {
                 if(currentFight.getSurvivors().size() <= 0){
                     System.out.println("All your Pokemon have fainted! You lose!");
                     endCombat();
+                    return;
                 }
+                
+                currentFight.switchPokemon();
 
             }
             return;
