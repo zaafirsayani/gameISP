@@ -12,11 +12,20 @@ public class CommandParser {
         this.currentFight = fight;
         fight.startBattle();
         isCombat = true;
+        fight.choosePokemon();
+        System.out.println(
+            "WHAT WILL YOU DO?" + "\n" +
+            "1. ATTACK [attack + MoveName (e.g. attack slash)]" + "\n" +
+            "2. CHECK STATS [check]" + "\n" + 
+            "3. SWITCH POKEMON [switch -number-]" + "\n" + 
+            "4. CATCH [catch]"
+            );
     }
 
     public void endCombat(){
         isCombat = false;
         currentFight = null;
+        System.out.println("You Win! You can now continue. Try searching again or moving someplace else!");
     }
 
     public void parse(String input, Player player, Map<String, Room> rooms) {
@@ -65,12 +74,20 @@ public class CommandParser {
                         endCombat();
                 }
                 break;
+                default: 
+                    System.out.println(
+                        "WHAT WILL YOU DO?" + "\n" +
+                        "1. ATTACK [attack + MoveName (e.g. attack slash)]" + "\n" +
+                        "2. CHECK STATS [check]" + "\n" + 
+                        "3. SWITCH POKEMON [switch -number-]" + "\n" + 
+                        "4. CATCH [catch]"
+                    );
 
                 
             }
 
             if(currentFight != null && currentFight.getChallenger().getHp() <= 0){
-                System.out.println(currentFight.getChallengerName() + " fainted! You Win! You can now continue.");
+                System.out.println(currentFight.getChallengerName() + " fainted!");
                 endCombat();
             } else if(currentFight != null && currentFight.getActive().getHp() <= 0){
                 System.out.println("Your Pokemon Fainted!");
@@ -87,6 +104,7 @@ public class CommandParser {
                     }
                     return;
                 }
+
                 
                 currentFight.switchPokemon();
 
