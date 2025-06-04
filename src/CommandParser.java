@@ -8,13 +8,13 @@ public class CommandParser {
     Room currentRoom; // The current room the player is in
     private String resumeRoomId; // Room ID to return to after healing
 
-    public void startCombat(Fight fight){
+    public void startCombat(Fight fight) {
         this.currentFight = fight;
         fight.startBattle();
         isCombat = true;
     }
 
-    public void endCombat(){
+    public void endCombat() {
         isCombat = false;
         currentFight = null;
     }
@@ -29,7 +29,7 @@ public class CommandParser {
 
         String command = words[0]; // The first word that the player types
 
-        if(isCombat){
+        if (isCombat) {
 
             switch (command) {
 
@@ -42,10 +42,11 @@ public class CommandParser {
                     } else {
                         currentFight.switchPokemon();
                     }
-                break;
+                    break;
                 case "attack": // Attacks with the active Pokemon
                     if (words.length < 2) {
-                        System.out.println("Which move? Try one of: " + currentFight.getActive().getm1() + " or " + currentFight.getActive().getm2());
+                        System.out.println("Which move? Try one of: " + currentFight.getActive().getm1() + " or "
+                                + currentFight.getActive().getm2());
                     } else {
                         String moveName = String.join(" ", Arrays.copyOfRange(words, 1, words.length));
                         Moves selectedMove = null;
@@ -58,51 +59,55 @@ public class CommandParser {
                             return;
                         }
                         currentFight.attack(currentFight.getActive(), currentFight.getChallenger(), selectedMove);
-                }
-                break;
+                    }
+                    break;
                 case "catch": // Attempts to catch the opponent's Pokemon
-                    if(currentFight.attemptCatch()){
+                    if (currentFight.attemptCatch()) {
                         endCombat();
-                }
-                break;
+                    }
+                    break;
 
-                
             }
 
-            if(currentFight != null && currentFight.getChallenger().getHp() <= 0){
+            if (currentFight != null && currentFight.getChallenger().getHp() <= 0) {
+                // The opponent's Pokemon fainted and the player wins
                 System.out.println(currentFight.getChallengerName() + " fainted! You Win! You can now continue.");
                 endCombat();
-            } else if(currentFight != null && currentFight.getActive().getHp() <= 0){
+            } else if (currentFight != null && currentFight.getActive().getHp() <= 0) {
+                // The player's active Pokemon fainted
                 System.out.println("Your Pokemon Fainted!");
-                currentFight.getSurvivors().remove(currentFight.getActive());
-                if(currentFight.getSurvivors().size() <= 0){
+                if (currentFight.getSurvivors().size() <= 0) {
+                    // All of the player's Pokemon have fainted
                     System.out.println("All your Pokemon have fainted! You lose!");
                     endCombat();
                     resumeRoomId = player.getCurrentRoomId(); // Save the room ID to return to after healing
                     player.setCurrentRoomId("pokecentre");
+                    for (Pokemon pokemon : player.getInventory()) {
+                        System.out.println("Healing " + pokemon.getName() + " from " + pokemon.getHp() + " to "
+                                + pokemon.getMaxHp());
+                        pokemon.setHp(pokemon.getMaxHp());
+                        System.out.println("After healing: " + pokemon.getHp());
+                    }
                     currentRoom = rooms.get("pokecentre");
                     System.out.println(rooms.get("pokecentre").getLongDescription());
-                    for (Pokemon pokemon : player.getInventory()) {
-                        pokemon.setHp(pokemon.getMaxHp()); // Heal all Pokemon in the player's inventory
-                    }
                     return;
                 }
-                
+
                 currentFight.switchPokemon();
 
             }
             return;
 
-            }
-            
+        }
 
-            
-        switch (command) {  
+        switch (command) {
 
             case "go":
                 if (player.getCurrentRoomId().equals("pol") && player.getInventory().size() == 0) {
-                    // If the player is in Professor Oak's lab and has no Pokemon, they must choose one
-                    System.out.println("Prof. Oak: Whoa, you can't go out there without a Pokemon! Choose one first. Charmander, Squirtle or Bulbasaur?");
+                    // If the player is in Professor Oak's lab and has no Pokemon, they must choose
+                    // one
+                    System.out.println(
+                            "Prof. Oak: Whoa, you can't go out there without a Pokemon! Choose one first. Charmander, Squirtle or Bulbasaur?");
                     return;
                 }
                 if (words.length < 2) {
@@ -110,7 +115,7 @@ public class CommandParser {
                 } else {
                     String direction = words[1];
                     currentRoom = rooms.get(player.getCurrentRoomId());
-                    if(currentRoom == null){
+                    if (currentRoom == null) {
                         System.out.println("next room not found!");
                     }
                     String nextRoomId = currentRoom.getExits().get(direction);
@@ -127,8 +132,10 @@ public class CommandParser {
                 break;
             case "north", "south", "east", "west": // More convenient direction commands
                 if (player.getCurrentRoomId().equals("pol") && player.getInventory().size() == 0) {
-                    // If the player is in Professor Oak's lab and has no Pokemon, they must choose one
-                    System.out.println("Prof. Oak: Whoa, you can't go out there without a Pokemon! Choose one first. Charmander, Squirtle or Bulbasaur?");
+                    // If the player is in Professor Oak's lab and has no Pokemon, they must choose
+                    // one
+                    System.out.println(
+                            "Prof. Oak: Whoa, you can't go out there without a Pokemon! Choose one first. Charmander, Squirtle or Bulbasaur?");
                     return;
                 }
                 String direction = words[0];
@@ -173,15 +180,30 @@ public class CommandParser {
                     System.out.println("There's no one to talk to here.");
                 }
                 break;
-            case "help", "help me", "commands", "what", "what can i do", "what do i say", "huh": // Displays a list of available commands
-                System.out.println("Available commands: go [direction], look, take [item], drop [item], inventory, help, talk");
+            case "help", "help me", "commands", "what", "what can i do", "what do i say", "huh": // Displays a list of
+                                                                                                 // available commands
+                System.out.println(
+                        "Available commands: go [direction], look, take [item], drop [item], inventory, help, talk");
                 break;
             case "return", "back", "go back": // Returns the player to the room where they were defeated
                 if (player.getCurrentRoomId().equals("pokecentre")) {
+                    if (resumeRoomId == null) {
+                        System.out.println("You haven't been defeated yet, there's no room to return to!");
+                        return;
+                    }
+                    for (Pokemon pokemon : player.getInventory()) {
+                        System.out.println("Healing " + pokemon.getName() + " from " + pokemon.getHp() + " to "
+                                + pokemon.getMaxHp());
+                        pokemon.setHp(pokemon.getMaxHp());
+                        System.out.println("After healing: " + pokemon.getHp());
+                    }
                     player.setCurrentRoomId(resumeRoomId);
                     currentRoom = rooms.get(resumeRoomId);
+                    resumeRoomId = null; // Clear the resume room ID after returning
                     System.out.println("Your Pokemon have been healed and returned to " + currentRoom.getName() + ".");
                     System.out.println(currentRoom.getLongDescription());
+                } else {
+                    System.out.println("This isn't the Pokemon Centre. No teleporting anywhere for you!");
                 }
                 break;
             case "search", "find": // Searches the current room for Pokemon
@@ -191,7 +213,8 @@ public class CommandParser {
                     return;
                 }
                 if (currentRoom.getId().equals("pol")) {
-                    System.out.println("What are you searching for? Professor Oak has presented the three Pokemon to you! Choose one by typing its name.");
+                    System.out.println(
+                            "What are you searching for? Professor Oak has presented the three Pokemon to you! Choose one by typing its name.");
                     return;
                 }
                 int pokeCount = 0;
@@ -200,45 +223,42 @@ public class CommandParser {
                         pokeCount++;
                     }
                 }
-                if(pokeCount == 0){
-                    System.out.println("There are either no pokemon in this room or you've found all the ones inside it!");
+                if (pokeCount == 0) {
+                    System.out.println(
+                            "There are either no pokemon in this room or you've found all the ones inside it!");
                     return;
                 }
                 int randomIndex = (int) (Math.random() * (pokeCount + 1));
                 if (randomIndex < pokeCount) {
                     Pokemon foundPokemon = currentRoom.get().get(randomIndex);
 
-                    
-                
                     currentRoom.removeItem(foundPokemon);
                     currentFight = new Fight(player, foundPokemon);
                     startCombat(currentFight);
-                    
-                    
+
                 } else {
                     System.out.println("You find nothing of interest... yet. Try searching again!");
                 }
-
 
                 break;
             case "Charmander", "charmander": // Gives the player a Charmander if they are in Professor Oak's lab
                 currentRoom = rooms.get(player.getCurrentRoomId());
                 if (currentRoom.getId().equals("pol")) {
                     if (currentRoom.get().size() < 3) {
-                        System.out.println("Prof. Oak: I'm afraid there are no more Pokemon available for you in the lab.");
+                        System.out.println(
+                                "Prof. Oak: I'm afraid there are no more Pokemon available for you in the lab.");
                         return;
                     }
                     Pokemon foundPokemon = currentRoom.get().get(0);
                     player.addItem(foundPokemon);
                     System.out.println("You received a Charmander!");
                     System.out.println(
-                        foundPokemon.getName() + "\n" +
-                        foundPokemon.getDescription() + "\n" +
-                        "Health: " + foundPokemon.getHp() + "\n" +
-                        "Attack: " + foundPokemon.getAtk() + "\n" +
-                        "Defense: " + foundPokemon.getDef() + "\n" +
-                        "Speed: " + foundPokemon.getSpd()
-                    );
+                            foundPokemon.getName() + "\n" +
+                                    foundPokemon.getDescription() + "\n" +
+                                    "Health: " + foundPokemon.getHp() + "\n" +
+                                    "Attack: " + foundPokemon.getAtk() + "\n" +
+                                    "Defense: " + foundPokemon.getDef() + "\n" +
+                                    "Speed: " + foundPokemon.getSpd());
                     currentRoom.removeItem(currentRoom.get().get(0)); // Remove Charmander
                     currentRoom.removeItem(currentRoom.get().get(0)); // Remove Squirtle
                     currentRoom.removeItem(currentRoom.get().get(0)); // Remove Bulbasaur
@@ -250,20 +270,20 @@ public class CommandParser {
                 currentRoom = rooms.get(player.getCurrentRoomId());
                 if (currentRoom.getId().equals("pol")) {
                     if (currentRoom.get().size() < 3) {
-                        System.out.println("Prof. Oak: I'm afraid there are no more Pokemon available for you in the lab.");
+                        System.out.println(
+                                "Prof. Oak: I'm afraid there are no more Pokemon available for you in the lab.");
                         return;
                     }
                     Pokemon foundPokemon = currentRoom.get().get(1);
                     player.addItem(foundPokemon);
                     System.out.println("You received a Squirtle!");
                     System.out.println(
-                        foundPokemon.getName() + "\n" +
-                        foundPokemon.getDescription() + "\n" +
-                        "Health: " + foundPokemon.getHp() + "\n" +
-                        "Attack: " + foundPokemon.getAtk() + "\n" +
-                        "Defense: " + foundPokemon.getDef() + "\n" +
-                        "Speed: " + foundPokemon.getSpd()
-                    );
+                            foundPokemon.getName() + "\n" +
+                                    foundPokemon.getDescription() + "\n" +
+                                    "Health: " + foundPokemon.getHp() + "\n" +
+                                    "Attack: " + foundPokemon.getAtk() + "\n" +
+                                    "Defense: " + foundPokemon.getDef() + "\n" +
+                                    "Speed: " + foundPokemon.getSpd());
                     currentRoom.removeItem(currentRoom.get().get(0)); // Remove Charmander
                     currentRoom.removeItem(currentRoom.get().get(0)); // Remove Squirtle
                     currentRoom.removeItem(currentRoom.get().get(0)); // Remove Bulbasaur
@@ -275,20 +295,20 @@ public class CommandParser {
                 currentRoom = rooms.get(player.getCurrentRoomId());
                 if (currentRoom.getId().equals("pol")) {
                     if (currentRoom.get().size() < 3) {
-                        System.out.println("Prof. Oak: I'm afraid there are no more Pokemon available for you in the lab.");
+                        System.out.println(
+                                "Prof. Oak: I'm afraid there are no more Pokemon available for you in the lab.");
                         return;
                     }
                     Pokemon foundPokemon = currentRoom.get().get(2);
                     player.addItem(foundPokemon);
                     System.out.println("You received a Bulbasaur!");
                     System.out.println(
-                        foundPokemon.getName() + "\n" +
-                        foundPokemon.getDescription() + "\n" +
-                        "Health: " + foundPokemon.getHp() + "\n" +
-                        "Attack: " + foundPokemon.getAtk() + "\n" +
-                        "Defense: " + foundPokemon.getDef() + "\n" +
-                        "Speed: " + foundPokemon.getSpd()
-                    );
+                            foundPokemon.getName() + "\n" +
+                                    foundPokemon.getDescription() + "\n" +
+                                    "Health: " + foundPokemon.getHp() + "\n" +
+                                    "Attack: " + foundPokemon.getAtk() + "\n" +
+                                    "Defense: " + foundPokemon.getDef() + "\n" +
+                                    "Speed: " + foundPokemon.getSpd());
                     currentRoom.removeItem(currentRoom.get().get(0)); // Remove Charmander
                     currentRoom.removeItem(currentRoom.get().get(0)); // Remove Squirtle
                     currentRoom.removeItem(currentRoom.get().get(0)); // Remove Bulbasaur
@@ -302,4 +322,3 @@ public class CommandParser {
         }
     }
 }
-

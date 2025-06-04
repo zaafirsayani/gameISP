@@ -16,7 +16,7 @@ public class Pokemon {
         this.atk = atk;
         this.def = def;
         this.hp = hp;
-        final int maxhp = hp;
+        this.maxhp = hp;
         this.spd = spd;
         this.name = name;
         this.description = description;

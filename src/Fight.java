@@ -8,15 +8,12 @@ public class Fight {
     private Pokemon playerCurrent;
     private boolean isOver = false;
     private List<Pokemon> currentParty;
-    private List<Pokemon> survivors;
 
 
     public Fight(Player player, Pokemon challenger){
         this.player = player;
         this.challenger = challenger;
-        this.playerCurrent = playerCurrent;
         this.currentParty = player.getInventory();
-        this.survivors = currentParty;
 
         choosePokemon();
     }
@@ -28,7 +25,12 @@ public class Fight {
     public void choosePokemon(){
         System.out.println("Which Pokemon will you send out first? (Type its -number- to pick it!)");
         for(int i = 0; i < currentParty.size(); i++){
-            System.out.println((i + 1) + ". " + currentParty.get(i).getName());
+            System.out.print((i + 1) + ". " + currentParty.get(i).getName());
+            if (currentParty.get(i).getHp() <= 0) {
+                System.out.println(" (fainted!)");
+            } else {
+                System.out.println();
+            }
         }
         
         Scanner scanner = new Scanner(System.in);
@@ -37,11 +39,13 @@ public class Fight {
             try {
                 choice = Integer.parseInt(scanner.nextLine());
             } catch (Exception e) {
-                choice = -1;
+                choice = -1; // Reset choice if input is invalid
             }
-            if (choice < 1 || choice > currentParty.size()) {
-                System.out.println("Invalid choice, try again.");
+            if (choice > 0 && choice <= currentParty.size() && currentParty.get(choice - 1).getHp() <= 0) {
+                System.out.println(currentParty.get(choice - 1).getName() + " has already fainted! Choose another one.");
+                choice = -1; // Reset choice if the selected Pokémon is fainted
             }
+            System.out.println("Please enter a number corresponding to one of your Pokémon!");
         }
         playerCurrent = currentParty.get(choice - 1);
         System.out.println("You sent out " + playerCurrent.getName() + "!");
@@ -65,17 +69,17 @@ public class Fight {
             System.out.print("> ");
             try {
                 choice = Integer.parseInt(scanner.nextLine());
+                if (choice < 1 || choice > currentParty.size() || currentParty.get(choice - 1).getHp() <= 0) {
+                    System.out.println("Please enter a number corresponding to one of your Pokémon. Make sure it's still able to fight!");
+                    choice = -1; // Reset choice if the input is invalid
+                }
             } catch (Exception e) {
-                choice = -1;
+                System.out.println("Please enter a number corresponding to one of your Pokémon!");
             }
         }
         Pokemon chosen = currentParty.get(choice - 1);
-        if (chosen.getHp() <= 0 || chosen == playerCurrent) {
-            System.out.println("You can't switch to that Pokémon.");
-        } else {
-            playerCurrent = chosen;
-            System.out.println("You switched to " + playerCurrent.getName() + "!");
-        }
+        playerCurrent = chosen;
+        System.out.println("You switched to " + playerCurrent.getName() + "!");
     }
 
     public void attack(Pokemon attacker, Pokemon victim, Moves move){
@@ -136,6 +140,12 @@ public class Fight {
     }
 
     public List<Pokemon> getSurvivors(){
+        List<Pokemon> survivors = new ArrayList<>();
+        for (Pokemon pokemon : currentParty) {
+            if (pokemon.getHp() > 0) {
+                survivors.add(pokemon);
+            }
+        }
         return survivors;
     }
 
