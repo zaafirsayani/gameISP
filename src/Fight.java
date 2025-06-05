@@ -3,6 +3,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Fight {
+    private String thisRoomId;
     private Player player;
     private Pokemon challenger;
     private Pokemon playerCurrent;
@@ -11,6 +12,7 @@ public class Fight {
 
 
     public Fight(Player player, Pokemon challenger){
+        this.thisRoomId = player.getCurrentRoomId();
         this.player = player;
         this.challenger = challenger;
         this.currentParty = player.getInventory();
@@ -164,5 +166,8 @@ public class Fight {
         return survivors;
     }
 
-    
+    public String getRoomId() {
+        return thisRoomId;
+    }
+
 }
