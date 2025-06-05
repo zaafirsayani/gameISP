@@ -88,7 +88,7 @@ public class Fight {
     public void attack(Pokemon attacker, Pokemon victim, Moves move){
 
         
-        int enemyDamage = Math.abs(attacker.getAtk() - (victim.getDef() / 2));
+        int enemyDamage = Math.abs(attacker.getAtk() - (victim.getDef() / 3));
        
         victim.receiveDmg(enemyDamage);
         System.out.println(attacker.getName() + " used " + move.getName() + " and dealt " + enemyDamage + " damage!");
@@ -141,6 +141,7 @@ public class Fight {
     }
 
     public void repStats() {
+        System.out.println(challenger.getDescription());
         System.out.println(challenger.getName() + " - HP: " + challenger.getHp() + ", ATK: " + challenger.getAtk() + ", DEF: " + challenger.getDef() + ", SPD: " + challenger.getSpd());
     }
 

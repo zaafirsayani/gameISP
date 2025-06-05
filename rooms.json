@@ -117,8 +117,8 @@
           "name": "Rowlet",
           "description": "A small, round, avian Pokemon with a leafy bowtie. It is known for its keen eyesight and ability to blend into grassy environments.",
           "hp": 68,
-          "atk": 55,
-          "def": 55,
+          "atk": 45,
+          "def": 45,
           "spd": 42,
           "moves": [
             {
@@ -346,8 +346,8 @@
           "name": "Growlithe",
           "description": "A small, orange dog-like Pokemon with black stripes. It is known for its loyalty and bravery.",
           "hp": 55,
-          "atk": 70,
-          "def": 50,
+          "atk": 60,
+          "def": 40,
           "spd": 60,
           "moves": [
             {
@@ -774,7 +774,7 @@
           "name": "Dragonite",
           "description": "A large, powerful dragon Pokemon with orange scales and large wings. It is known for its strength and speed.",
           "hp": 91,
-          "atk": 134,
+          "atk": 100,
           "def": 95,
           "spd": 80,
           "moves": [
@@ -803,7 +803,7 @@
           "name": "Garchomp",
           "description": "A large, powerful dragon Pokemon with blue scales and sharp teeth. It is known for its strength and speed.",
           "hp": 108,
-          "atk": 130,
+          "atk": 100,
           "def": 95,
           "spd": 102,
           "moves": [
@@ -831,8 +831,8 @@
       {
         "name": "Mewtwo",
         "description": "A genetically engineered Pokemon with unmatched psychic abilities.",
-        "hp": 201,
-        "atk": 170,
+        "hp": 150,
+        "atk": 130,
         "def": 90,
         "spd": 155,
         "moves":[

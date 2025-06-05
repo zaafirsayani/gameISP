@@ -3,28 +3,28 @@ import java.util.Map;
 
 public class CommandParser {
 
-    private boolean isCombat = false;
-    private Fight currentFight;
+    private boolean isCombat = false; // tracks if player is in combat
+    private Fight currentFight; // Current active fight
     Room currentRoom; // The current room the player is in
     private String resumeRoomId; // Room ID to return to after healing
 
     public void startCombat(Fight fight){
-        this.currentFight = fight;
-        fight.startBattle();
-        isCombat = true;
-        fight.choosePokemon();
-        System.out.println(
+        this.currentFight = fight; // sets current fight
+        fight.startBattle(); // begins the battle by triggering stats in the fight class
+        isCombat = true; // enable combat
+        fight.choosePokemon(); // allows player to pick pokemon
+        System.out.println( // display combat options immediately
             "WHAT WILL YOU DO?" + "\n" +
             "1. ATTACK [use + MoveName (e.g. attack slash)]" + "\n" +
             "2. CHECK STATS [check]" + "\n" + 
-            "3. SWITCH POKEMON [switch -number-]" + "\n" + 
+            "3. SWITCH POKEMON [switch]" + "\n" + 
             "4. CATCH [catch]" 
 
             );
     }
 
-    public void endCombat(){
-        if (currentFight.getChallenger().getHp() <= 0) {
+    public void endCombat(){ // ends combat mode
+        if (currentFight.getChallenger().getHp() <= 0) { // if the wild Pokemon has fainted (hp <= 0)
             currentRoom.get().remove(currentFight.getChallenger()); // Remove the defeated Pokemon from the room
         }
         isCombat = false;
@@ -32,14 +32,14 @@ public class CommandParser {
         
     }
 
-    public void end(){
+    public void end(){ // prints congratulations upon game completion
         System.out.println("\n========================");
         System.out.println("CONGRATULATIONS, Ash!");
         System.out.println("Or should I say, the special Trainer behind this screen! Though you played as Ash, it was YOU that defeated all opponents and proved your worth.");
         System.out.println("Thank you for playing!");
         System.out.println("========================\n");
 
-        System.exit(0); 
+        System.exit(0); // terminate game
     }
 
     public void parse(String input, Player player, Map<String, Room> rooms) {
@@ -56,59 +56,61 @@ public class CommandParser {
 
             switch (command) {
 
-                case "check":
+                case "check": // displays the challenger pokemon's stats and description
                     currentFight.repStats();
                     break;
                 case "switch": // Switches the active Pokemon
-                    if (words.length < 2) {
-                        System.out.println("Switch to who?");
-                    } else {
-                        currentFight.switchPokemon();
+                    if(player.getInventory().size() <= 1){ // checks if the player has any pokemon they can switch to
+                        System.out.println("You have no Pokemon to switch to!");
+                        return;
                     }
+                    
+                    currentFight.switchPokemon(); // switches the pokemon
+                    
                 break;
                 case "use", "attack": // Attacks with the active Pokemon
-                    if (words.length < 2) {
+                    if (words.length < 2) { // if move not specified
                         System.out.println("Which move? Try one of: " + currentFight.getActive().getm1() + " or " + currentFight.getActive().getm2() );
                     } else {
-                        String moveName = String.join(" ", Arrays.copyOfRange(words, 1, words.length));
-                        Moves selectedMove = null;
-                        if (currentFight.getActive().getm1().equalsIgnoreCase(moveName)) {
+                        String moveName = String.join(" ", Arrays.copyOfRange(words, 1, words.length)); // sets moveName to player imput
+                        Moves selectedMove = null; // move to use
+                        if (currentFight.getActive().getm1().equalsIgnoreCase(moveName)) { // if the moveName input is one of the moves that the pokemon has, use that move
                             selectedMove = currentFight.getActive().getMove1();
                         } else if (currentFight.getActive().getm2().equalsIgnoreCase(moveName)) {
                             selectedMove = currentFight.getActive().getMove2();
                         } else {
-                            System.out.println("Invalid move name.");
+                            System.out.println("Invalid move name."); 
                             return;
                         }
-                        currentFight.attack(currentFight.getActive(), currentFight.getChallenger(), selectedMove);
+                        currentFight.attack(currentFight.getActive(), currentFight.getChallenger(), selectedMove); // attacks with the move and pokemon
                     }
                 break;
                 case "catch": // Attempts to catch the opponent's Pokemon
-                    if(currentRoom.getId().equals("boss arena")){
+                    if(currentRoom.getId().equals("boss arena")){ // checks if in bossfight to ensure mewtwo cannot be caught
                         System.out.println("You can't catch this Pokemon!");
                         return;
                     }
 
                     if(currentFight.attemptCatch()){
                         currentRoom.get().remove(currentFight.getChallenger()); // Remove the caught Pokemon from the room
-                        endCombat();
+                        endCombat(); 
                     }
                 break;
                 default: 
-                    System.out.println(
+                    System.out.println( // prints helper again in case input does not make sense
                         "\nWHAT WILL YOU DO?" + "\n" +
                         "1. ATTACK [use + MoveName (e.g. attack slash)]" + "\n" +
                         "2. CHECK STATS [check]" + "\n" + 
-                        "3. SWITCH POKEMON [switch -number-]" + "\n" + 
+                        "3. SWITCH POKEMON [switch]" + "\n" + 
                         "4. CATCH [catch]"
                     );
 
                 
             }
 
-            if(currentFight != null && currentFight.getChallenger().getHp() <= 0){
+            if(currentFight != null && currentFight.getChallenger().getHp() <= 0){ // if opposing pokemon has fainted
                 System.out.println(currentFight.getChallengerName() + " fainted!");
-                if(currentRoom.getId().equals("boss arena")){
+                if(currentRoom.getId().equals("boss arena")){ // in case this has occurred in the boss arena, end the game
                     endCombat();
                     System.out.println(
                         "\n" +
@@ -117,7 +119,7 @@ public class CommandParser {
                     );
                     end();
                 }
-                System.out.println("You Win! You can now continue. Try searching again or moving someplace else!");
+                System.out.println("You Win! You can now continue. Try searching again or moving someplace else!"); // otherwise, explain what happened and end combat
                 endCombat();
             } else if(currentFight != null && currentFight.getActive().getHp() <= 0){
                 System.out.println("Your Pokemon Fainted!");
@@ -126,6 +128,16 @@ public class CommandParser {
                     currentFight.getChallenger().setHp(currentFight.getChallenger().getMaxHp());
                     System.out.println("All your Pokemon have fainted! You lose!");
                     endCombat();
+
+                    resumeRoomId = player.getCurrentRoomId(); // Save the room ID to return to after healing
+                    player.setCurrentRoomId("pokecentre");
+                    currentRoom = rooms.get("pokecentre");
+                    System.out.println(rooms.get("pokecentre").getLongDescription());
+                    for (Pokemon pokemon : player.getInventory()) {
+                        pokemon.setHp(pokemon.getMaxHp()); // Heal all Pokemon in the player's inventory
+                    }
+
+                    return;
                     
 
                 }
@@ -252,11 +264,12 @@ public class CommandParser {
                 }
                 break;
             case "search", "find": // Searches the current room for Pokemon
+                
+                currentRoom = rooms.get(player.getCurrentRoomId());
                 if(currentRoom.getId().equals("boss arena")){
                     System.out.println("You're not allowed to search in here!");
                     return;
                 }
-                currentRoom = rooms.get(player.getCurrentRoomId());
                 if (currentRoom == null) {
                     System.out.println("You can't search here, the room does not exist.");
                     return;

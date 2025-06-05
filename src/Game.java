@@ -9,7 +9,7 @@ public class Game {
     public Game() {
         RoomLoader roomLoader = new RoomLoader();
         rooms = roomLoader.loadRooms("rooms.json");
-        player = new Player("boss arena");
+        player = new Player("start");
         commandParser = new CommandParser();
     }
 
