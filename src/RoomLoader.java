@@ -25,9 +25,9 @@ public class RoomLoader {
                     exits.put(exit.getKey(), exit.getValue().getAsString());
                 }
 
-                List<Pokemon> pokeList = new ArrayList<>();
-                JsonArray pokemonsJson = roomData.getAsJsonArray("pokemons");
-                for (JsonElement pokeElement : pokemonsJson) {
+                List<Pokemon> pokeList = new ArrayList<>(); // makes list of pokemon
+                JsonArray pokemonsJson = roomData.getAsJsonArray("pokemons"); // checks json file for pokemons
+                for (JsonElement pokeElement : pokemonsJson) { // iterates through the list of pokemons, creating attributes for each
                     JsonObject pokeObj = pokeElement.getAsJsonObject();
                     String pokeName = pokeObj.get("name").getAsString();
                     String pokeDescription = pokeObj.get("description").getAsString();
@@ -39,14 +39,14 @@ public class RoomLoader {
                     JsonArray movesArr = pokeObj.getAsJsonArray("moves");
                     List<Moves> movesList = new ArrayList<>();
 
-                    for(int i = 0; i < movesArr.size(); i++){
+                    for(int i = 0; i < movesArr.size(); i++){ // iterates through move list for each pokemon
                         JsonObject moveObj = movesArr.get(i).getAsJsonObject();
                         String moveName = moveObj.get("name").getAsString();
                         String moveType = moveObj.get("type").getAsString();
                         movesList.add(new Moves(moveName, moveType));
                     }
 
-                    // Fallbacks if there are fewer than 2 moves (optional depending on how your game handles it)
+                    // Fallbacks if there are fewer than 2 moves (just in case for bugfixing, never removed beause it's shaky)
                     Moves m1 = movesList.size() > 0 ? movesList.get(0) : new Moves("Tackle", "Normal");
                     Moves m2 = movesList.size() > 1 ? movesList.get(1) : new Moves("Growl", "Normal");
 
@@ -55,7 +55,7 @@ public class RoomLoader {
                     
                 }
 
-                Room room = new Room(roomId, name, description, exits, pokeList, dialogue);
+                Room room = new Room(roomId, name, description, exits, pokeList, dialogue); // creates rooms
                 rooms.put(roomId, room);
                 
             }

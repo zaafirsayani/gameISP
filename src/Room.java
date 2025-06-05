@@ -2,12 +2,12 @@ import java.util.List;
 import java.util.Map;
 
 public class Room {
-    private String id;
-    private String name;
-    private String description;
-    private String dialogue;
+    private String id; // room id
+    private String name; // room name
+    private String description; // description of room
+    private String dialogue; // prompted dialogue in room
     private Map<String, String> exits; // direction → roomId
-    private List<Pokemon> pokemons;
+    private List<Pokemon> pokemons; // pokemons in room
 
     public Room(String id, String name, String description, Map<String, String> exits, List<Pokemon> pokemons, String dialogue) {
         this.id = id;

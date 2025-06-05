@@ -13,7 +13,7 @@ public class Game {
         commandParser = new CommandParser();
     }
 
-    public void start() {
+    public void start() { // provides helper tool and scanner/parsing
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to the world of Pokemon!");
         System.out.println("Here are some commands you can give me to get started.");

@@ -3,15 +3,14 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Fight {
-    private String thisRoomId;
-    private Player player;
-    private Pokemon challenger;
-    private Pokemon playerCurrent;
-    private boolean isOver = false;
-    private List<Pokemon> currentParty;
+    private String thisRoomId; // currentroomid
+    private Player player; // the player
+    private Pokemon challenger; // wild pokemon
+    private Pokemon playerCurrent; // current active pokemon
+    private List<Pokemon> currentParty; // current inventory
 
 
-    public Fight(Player player, Pokemon challenger){
+    public Fight(Player player, Pokemon challenger){ // constructor
         this.thisRoomId = player.getCurrentRoomId();
         this.player = player;
         this.challenger = challenger;
@@ -20,15 +19,13 @@ public class Fight {
         
     }
 
-    public boolean isOver(){
-        return isOver;
-    }
+    
 
-    public void choosePokemon(){
+    public void choosePokemon(){ // chooses first pokemon to send out when fight begins
         System.out.println("Which Pokemon will you send out first? (Type its -number- to pick it!)");
         for(int i = 0; i < currentParty.size(); i++){
-            System.out.print((i + 1) + ". " + currentParty.get(i).getName());
-            if (currentParty.get(i).getHp() <= 0) {
+            System.out.print((i + 1) + ". " + currentParty.get(i).getName()); // displays pokemon to pick
+            if (currentParty.get(i).getHp() <= 0) { // checks to see if pokemon is fainted
                 System.out.println(" (fainted!)");
             } else {
                 System.out.println();
@@ -44,7 +41,7 @@ public class Fight {
                 choice = -1; // Reset choice if input is invalid
             }
             if (choice > 0 && choice <= currentParty.size() && currentParty.get(choice - 1).getHp() <= 0) {
-                System.out.println(currentParty.get(choice - 1).getName() + " has already fainted! Choose another one.");
+                System.out.println(currentParty.get(choice - 1).getName() + " has already fainted! Choose another one."); // ensures picked pokemon is not fainted
                 choice = -1; // Reset choice if the selected Pokémon is fainted
             }
             System.out.println("Please enter a number corresponding to one of your Pokémon!");
@@ -54,16 +51,16 @@ public class Fight {
 
     }
 
-    public void startBattle(){
+    public void startBattle(){ // displays battle beginning text
         System.out.println("\nA wild " + challenger.getName() + " appears!");
         System.out.println("HP: " + challenger.getHp() + "\n");
     }
 
-    public void switchPokemon(){
+    public void switchPokemon(){ // switches active pokemon based on player input
         System.out.println("Switch to who? (Type -number-)");
         for (int i = 0; i < currentParty.size(); i++) {
             if (currentParty.get(i) != playerCurrent && currentParty.get(i).getHp() > 0) {
-                System.out.println((i + 1) + ". " + currentParty.get(i).getName());
+                System.out.println((i + 1) + ". " + currentParty.get(i).getName()); // displays switchable pokemon
             }
         }
         Scanner scanner = new Scanner(System.in);
@@ -85,46 +82,46 @@ public class Fight {
         System.out.println("You switched to " + playerCurrent.getName() + "!");
     }
 
-    public void attack(Pokemon attacker, Pokemon victim, Moves move){
+    public void attack(Pokemon attacker, Pokemon victim, Moves move){ // attacks the pokemon
 
         
-        int enemyDamage = Math.abs(attacker.getAtk() - (victim.getDef() / 3));
+        int enemyDamage = Math.abs(attacker.getAtk() - (victim.getDef() / 3)); //calculates damage against enemy
        
         victim.receiveDmg(enemyDamage);
-        System.out.println(attacker.getName() + " used " + move.getName() + " and dealt " + enemyDamage + " damage!");
+        System.out.println(attacker.getName() + " used the " + move.getPower() + "-type " + move.getName() + " and dealt " + enemyDamage + " damage!"); // displays damage
  
-        if(victim.getHp() > 0){
-        System.out.println("REMAINING HP: " + victim.getHp());
-        Moves enemyMove = Math.random() < 0.5 ? challenger.getMove1() : challenger.getMove2();
+        if(victim.getHp() > 0){ // if pokemonis still alive, display health and let them attack back
+        System.out.println("REMAINING HP: " + victim.getHp()); 
+        Moves enemyMove = Math.random() < 0.5 ? challenger.getMove1() : challenger.getMove2(); // randomize enemy move between 1 and 2
         System.out.println("The wild " + victim.getName() + " attacks!");
 
 
         
-        int activeDamage = Math.abs(victim.getAtk() - (attacker.getDef() / 2));
+        int activeDamage = Math.abs(victim.getAtk() - (attacker.getDef() / 2)); // calculates damage against player pokemon
         playerCurrent.receiveDmg(activeDamage);
-        System.out.println(victim.getName() + " used " + enemyMove.getName() + " and dealt " + activeDamage + " damage!");
+        System.out.println(victim.getName() + " used the " + enemyMove.getPower() + "-type " + enemyMove.getName() + " and dealt " + activeDamage + " damage!"); // displays damage
         
         }
         
         
     }
 
-    public boolean attemptCatch(){
+    public boolean attemptCatch(){ // attempts catch
 
-        if(player.getInventory().size() == 3){
+        if(player.getInventory().size() == 3){ // prevents catching if player has more than 3 pokemon in their party
             System.out.println("You already have 3 Pokemon! You can't catch another!");
             return false;
         }
-        if(challenger.getHp() > (challenger.getMaxHp() * 0.5)){
-            System.out.println(challenger.getName() + "'s health is too high! It must be under 40% of its maximum!");
+        if(challenger.getHp() > (challenger.getMaxHp() * 0.5)){ // prevents catching if pokemon is under 50% health
+            System.out.println(challenger.getName() + "'s health is too high! It must be under 50% of its maximum!");
             return false;
         }
 
         
-        player.addPokemon(challenger);
-        challenger.setHp(challenger.getMaxHp());
+        player.addPokemon(challenger); // if successful, add them to party
+        challenger.setHp(challenger.getMaxHp()); // reset their hp
                     
-        System.out.println("You found a " + challenger.getName() + "!");
+        System.out.println("You found a " + challenger.getName() + "!"); // display stats
         System.out.println(
             challenger.getName() + "\n" + 
             challenger.getDescription() + "\n" +
@@ -140,16 +137,16 @@ public class Fight {
 
     }
 
-    public void repStats() {
+    public void repStats() { // displays Pokemon statistics and description
         System.out.println(challenger.getDescription());
         System.out.println(challenger.getName() + " - HP: " + challenger.getHp() + ", ATK: " + challenger.getAtk() + ", DEF: " + challenger.getDef() + ", SPD: " + challenger.getSpd());
     }
 
-    public Pokemon getActive(){
+    public Pokemon getActive(){ // returns active pokemon
         return playerCurrent;
     }
 
-    public Pokemon getChallenger(){
+    public Pokemon getChallenger(){ //returns wild pokemon
         return challenger;
     }
 
@@ -157,7 +154,7 @@ public class Fight {
         return challenger.getName();
     }
 
-    public List<Pokemon> getSurvivors(){
+    public List<Pokemon> getSurvivors(){ // returns list of currently surviving player's pokemon
         List<Pokemon> survivors = new ArrayList<>();
         for (Pokemon pokemon : currentParty) {
             if (pokemon.getHp() > 0) {
@@ -167,7 +164,7 @@ public class Fight {
         return survivors;
     }
 
-    public String getRoomId() {
+    public String getRoomId() { // returns roomId
         return thisRoomId;
     }
 
