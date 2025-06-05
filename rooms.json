@@ -714,6 +714,7 @@
       "exits": {
         "north": "dragon cavern",
         "south": "powerplant entrance unlocked"
+        
       },
       "pokemons": []
     },
@@ -725,17 +726,19 @@
       "exits": {
         "north": "dragon cavern",
         "south": "mansion west unlocked"
+        
       },
       "pokemons": []
     },
 
     "dragon cavern": {
       "name": "Dragon Cavern",
-      "description": "You enter a dark, damp cave echoing with the sound of dripping water. \nSuddenly, the entrance behind you has collapsed to the ground. \nTorches light themselves up around the cave. Now you can see: this is a big circular chamber with its walls covered in strange markings. Three gaping paths present themselves before you: one roughly to the west, one to the north, and one roughly to the east. The northward path is closed off by a boulder. \nYou can already feel the presence of a Pokemon circling around in the dark, watching you.",
+      "description": "You enter a dark, damp cave echoing with the sound of dripping water. \nSuddenly, the entrance behind you has collapsed to the ground. \nTorches light themselves up around the cave. Now you can see: this is a big circular chamber with its walls covered in strange markings. Three gaping paths present themselves before you: one roughly to the west, one to the north, and one roughly to the east. The northward path exists, but is quite long. It seems like you should explore this area first. \nYou can already feel the presence of a Pokemon circling around in the dark, watching you.",
       "dialogue": "...Maybe you can search for a dragon here?",
       "exits": {
         "west": "dragonite lair",
-        "east": "garchomp lair"
+        "east": "garchomp lair",
+        "north": "boss arena"
       },
       "pokemons": [
         {
@@ -819,12 +822,13 @@
 
     "boss arena": {
       "name": "Red's Arena",
-      "description": "You enter a large, booming stadium filled with jeering trainers and braodcasters. They've been expecting arrivals. A trainer sadly walks away from the stage, defeated by a taunting trainer, Red. You know about him. Talked about all across the island, Red is a formidable trainer that's known for challenging opponents and laughing in their face. What is he doing here?",
-      "dialogue": "Red: Hm? Who's this? You look like a trainer! Are you lost? Ha! I won't mind defeating you too! They say anyone who beats is world-renowned, but that's never going to happen. I challenge you to face my most powerful Pokemon! I send out Mewtwo!",
+      "description": "You enter a large, booming stadium filled with jeering trainers and braodcasters. They've been expecting arrivals. A trainer sadly walks away from the stage, defeated by a taunting trainer, Red. You know about him. Talked about all across the island, Red is a formidable trainer that's known for challenging opponents and laughing in their face. What is he doing here? You still have a chance to turn back south and fight more Pokemon before you face him!",
+      "dialogue": "Red: Hm? Who's this? You look like a trainer! Are you lost? Ha! I won't mind defeating you too! They say anyone who beats is world-renowned, but that's never going to happen. I challenge you to face my most powerful Pokemon! I send out Mewtwo! \n Tip: Try to use -challenge- or -fight- to fight Red when you're ready!",
       "exits": {
-        
+      "south": "dragon cavern"
       },
-      "pokemons": [{
+      "pokemons": [
+      {
         "name": "Mewtwo",
         "description": "A genetically engineered Pokemon with unmatched psychic abilities.",
         "hp": 201,
@@ -844,7 +848,7 @@
         
       }
         
-      ]
+    ]
       
       
       }

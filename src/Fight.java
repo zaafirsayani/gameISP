@@ -100,7 +100,7 @@ public class Fight {
 
 
         
-        int activeDamage = victim.getAtk() - (attacker.getDef() / 2);
+        int activeDamage = Math.abs(victim.getAtk() - (attacker.getDef() / 2));
         playerCurrent.receiveDmg(activeDamage);
         System.out.println(victim.getName() + " used " + enemyMove.getName() + " and dealt " + activeDamage + " damage!");
         

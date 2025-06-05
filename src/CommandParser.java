@@ -84,7 +84,7 @@ public class CommandParser {
                     }
                 break;
                 case "catch": // Attempts to catch the opponent's Pokemon
-                    if(currentRoom.getId().equals("boss room")){
+                    if(currentRoom.getId().equals("boss arena")){
                         System.out.println("You can't catch this Pokemon!");
                         return;
                     }
@@ -96,7 +96,7 @@ public class CommandParser {
                 break;
                 default: 
                     System.out.println(
-                        "WHAT WILL YOU DO?" + "\n" +
+                        "\nWHAT WILL YOU DO?" + "\n" +
                         "1. ATTACK [use + MoveName (e.g. attack slash)]" + "\n" +
                         "2. CHECK STATS [check]" + "\n" + 
                         "3. SWITCH POKEMON [switch -number-]" + "\n" + 
@@ -108,9 +108,10 @@ public class CommandParser {
 
             if(currentFight != null && currentFight.getChallenger().getHp() <= 0){
                 System.out.println(currentFight.getChallengerName() + " fainted!");
-                if(currentRoom.getId().equals("boss room")){
+                if(currentRoom.getId().equals("boss arena")){
                     endCombat();
                     System.out.println(
+                        "\n" +
                         "Red: It can't be... How have I been defeated?" + "\n" + 
                         "Alas, I must accept it. I hereby crown you as the new champion of this stadium!"
                     );
@@ -122,17 +123,11 @@ public class CommandParser {
                 System.out.println("Your Pokemon Fainted!");
                 currentFight.getSurvivors().remove(currentFight.getActive());
                 if(currentFight.getSurvivors().size() <= 0){
+                    currentFight.getChallenger().setHp(currentFight.getChallenger().getMaxHp());
                     System.out.println("All your Pokemon have fainted! You lose!");
                     endCombat();
-                    currentFight.getChallenger().setHp(currentFight.getChallenger().getMaxHp());
-                    resumeRoomId = player.getCurrentRoomId(); // Save the room ID to return to after healing
-                    player.setCurrentRoomId("pokecentre");
-                    currentRoom = rooms.get("pokecentre");
-                    System.out.println(rooms.get("pokecentre").getLongDescription());
-                    for (Pokemon pokemon : player.getInventory()) {
-                        pokemon.setHp(pokemon.getMaxHp()); // Heal all Pokemon in the player's inventory
-                    }
-                    return;
+                    
+
                 }
 
                 
@@ -195,15 +190,12 @@ public class CommandParser {
                 currentRoom = rooms.get(player.getCurrentRoomId());
                 System.out.println(currentRoom.getLongDescription());
                 break;
-            case "inventory", "i", "inv": // Checks the player's inventory (list of Pokemon)
-                if (player.getInventory().isEmpty()) {
-                    System.out.println("Your inventory is empty.");
-                } else {
-                    System.out.println("You are carrying:");
-                    for (Pokemon item : player.getInventory()) {
-                        System.out.println("- " + item.getName());
-                    }
+            case "inventory", "i", "inv", "party": // Checks the player's inventory (list of Pokemon)
+                if(player.getInventory().size() < 1){
+                    System.out.println("You are not carrying any Pokemon.");
+                    return;
                 }
+                player.checkInventory();
                 break;
             case "drop": // Drops (releases) a Pokemon from the player's inventory
                 if(player.getInventory().size() == 1){
@@ -247,6 +239,7 @@ public class CommandParser {
                 System.out.println("- \"inventory\", \"i\" or \"inv\": to check your inventory (list of Pokemon you have).");
                 System.out.println("- \"drop [Pokemon name]\": to release a Pokemon from your inventory.");
                 System.out.println("- \"talk\", \"speak\", \"chat\", \"say\", or \"dialogue\": to engage in dialogue in the current room.");
+                System.out.println("Tip: If an NPC is known to be in a room, you will likely need to talk to it to gather context. There might be dialogue hints in rooms without NPCs too!");
                 System.out.println("Some other commands are only available in specific rooms or situations. You'll know when you can use them!");
                 System.out.println("Good luck on your journey!");
                 break;
@@ -259,6 +252,10 @@ public class CommandParser {
                 }
                 break;
             case "search", "find": // Searches the current room for Pokemon
+                if(currentRoom.getId().equals("boss arena")){
+                    System.out.println("You're not allowed to search in here!");
+                    return;
+                }
                 currentRoom = rooms.get(player.getCurrentRoomId());
                 if (currentRoom == null) {
                     System.out.println("You can't search here, the room does not exist.");
@@ -291,6 +288,23 @@ public class CommandParser {
 
 
                 break;
+            case "pokestop", "Pokestop", "go pokestop", "rest":
+                resumeRoomId = player.getCurrentRoomId(); // Save the room ID to return to after healing
+                player.setCurrentRoomId("pokecentre");
+                currentRoom = rooms.get("pokecentre");
+                System.out.println(rooms.get("pokecentre").getLongDescription());
+                for (Pokemon pokemon : player.getInventory()) {
+                    pokemon.setHp(pokemon.getMaxHp()); // Heal all Pokemon in the player's inventory
+                }
+                      
+                break;  
+            case "challenge", "fight":
+                if(currentRoom.getId().equals("boss arena")){
+                    Pokemon foundPokemon = currentRoom.get().get(0);
+
+                    currentFight = new Fight(player, foundPokemon);
+                    startCombat(currentFight);                    
+                }          
             case "Charmander", "charmander": // Gives the player a Charmander if they are in Professor Oak's lab
                 currentRoom = rooms.get(player.getCurrentRoomId());
                 if (currentRoom.getId().equals("pol")) {

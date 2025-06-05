@@ -34,4 +34,12 @@ public class Player {
     public List<Pokemon> getInventory() {
         return pokeparty;
     }
+
+    public void checkInventory(){
+        for(Pokemon p : pokeparty){
+            System.out.println(
+                "\n" + p.getName() + ". HP: " + p.getHp() + "\n"
+            );
+        }
+    }
 }
