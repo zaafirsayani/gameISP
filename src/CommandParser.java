@@ -14,11 +14,12 @@ public class CommandParser {
         isCombat = true;
         fight.choosePokemon();
         System.out.println(
-            "\nWHAT WILL YOU DO?" + "\n" +
+            "WHAT WILL YOU DO?" + "\n" +
             "1. ATTACK [use + MoveName (e.g. attack slash)]" + "\n" +
             "2. CHECK STATS [check]" + "\n" + 
             "3. SWITCH POKEMON [switch -number-]" + "\n" + 
-            "4. CATCH [catch]"
+            "4. CATCH [catch]" 
+
             );
     }
 
@@ -29,6 +30,16 @@ public class CommandParser {
         isCombat = false;
         currentFight = null;
         
+    }
+
+    public void end(){
+        System.out.println("\n========================");
+        System.out.println("CONGRATULATIONS, Ash!");
+        System.out.println("Or should I say, the special Trainer behind this screen! Though you played as Ash, it was YOU that defeated all opponents and proved your worth.");
+        System.out.println("Thank you for playing!");
+        System.out.println("========================\n");
+
+        System.exit(0); 
     }
 
     public void parse(String input, Player player, Map<String, Room> rooms) {
@@ -73,6 +84,11 @@ public class CommandParser {
                     }
                 break;
                 case "catch": // Attempts to catch the opponent's Pokemon
+                    if(currentRoom.getId().equals("boss room")){
+                        System.out.println("You can't catch this Pokemon!");
+                        return;
+                    }
+
                     if(currentFight.attemptCatch()){
                         currentRoom.get().remove(currentFight.getChallenger()); // Remove the caught Pokemon from the room
                         endCombat();
@@ -80,7 +96,7 @@ public class CommandParser {
                 break;
                 default: 
                     System.out.println(
-                        "\nWHAT WILL YOU DO?" + "\n" +
+                        "WHAT WILL YOU DO?" + "\n" +
                         "1. ATTACK [use + MoveName (e.g. attack slash)]" + "\n" +
                         "2. CHECK STATS [check]" + "\n" + 
                         "3. SWITCH POKEMON [switch -number-]" + "\n" + 
@@ -92,6 +108,14 @@ public class CommandParser {
 
             if(currentFight != null && currentFight.getChallenger().getHp() <= 0){
                 System.out.println(currentFight.getChallengerName() + " fainted!");
+                if(currentRoom.getId().equals("boss room")){
+                    endCombat();
+                    System.out.println(
+                        "Red: It can't be... How have I been defeated?" + "\n" + 
+                        "Alas, I must accept it. I hereby crown you as the new champion of this stadium!"
+                    );
+                    end();
+                }
                 System.out.println("You Win! You can now continue. Try searching again or moving someplace else!");
                 endCombat();
             } else if(currentFight != null && currentFight.getActive().getHp() <= 0){
@@ -100,6 +124,7 @@ public class CommandParser {
                 if(currentFight.getSurvivors().size() <= 0){
                     System.out.println("All your Pokemon have fainted! You lose!");
                     endCombat();
+                    currentFight.getChallenger().setHp(currentFight.getChallenger().getMaxHp());
                     resumeRoomId = player.getCurrentRoomId(); // Save the room ID to return to after healing
                     player.setCurrentRoomId("pokecentre");
                     currentRoom = rooms.get("pokecentre");
@@ -125,7 +150,7 @@ public class CommandParser {
             case "go":
                 if (player.getCurrentRoomId().equals("pol") && player.getInventory().size() == 0) {
                     // If the player is in Professor Oak's lab and has no Pokemon, they must choose one
-                    System.out.println("\nProf. Oak: Whoa, you can't go out there without a Pokemon! Choose one first. Charmander, Squirtle or Bulbasaur?\n");
+                    System.out.println("Prof. Oak: Whoa, you can't go out there without a Pokemon! Choose one first. Charmander, Squirtle or Bulbasaur?");
                     return;
                 }
                 if (words.length < 2) {
@@ -151,7 +176,7 @@ public class CommandParser {
             case "north", "south", "east", "west": // More convenient direction commands
                 if (player.getCurrentRoomId().equals("pol") && player.getInventory().size() == 0) {
                     // If the player is in Professor Oak's lab and has no Pokemon, they must choose one
-                    System.out.println("\nProf. Oak: Whoa, you can't go out there without a Pokemon! Choose one first. Charmander, Squirtle or Bulbasaur?\n");
+                    System.out.println("Prof. Oak: Whoa, you can't go out there without a Pokemon! Choose one first. Charmander, Squirtle or Bulbasaur?");
                     return;
                 }
                 String direction = words[0];
@@ -210,9 +235,9 @@ public class CommandParser {
                 currentRoom = rooms.get(player.getCurrentRoomId());
                 String dialogue = currentRoom.getDialogue();
                 if (dialogue != null && !dialogue.isEmpty()) {
-                    System.out.println("\n" + dialogue + "\n");
+                    System.out.println(dialogue);
                 } else {
-                    System.out.println("\nThere's no one to talk to here.\n");
+                    System.out.println("There's no one to talk to here.");
                 }
                 break;
             case "help", "help me", "commands", "what", "what can i do", "what do i say", "huh": // Displays a list of available commands
@@ -223,7 +248,7 @@ public class CommandParser {
                 System.out.println("- \"drop [Pokemon name]\": to release a Pokemon from your inventory.");
                 System.out.println("- \"talk\", \"speak\", \"chat\", \"say\", or \"dialogue\": to engage in dialogue in the current room.");
                 System.out.println("Some other commands are only available in specific rooms or situations. You'll know when you can use them!");
-                System.out.println("Good luck on your journey!\n");
+                System.out.println("Good luck on your journey!");
                 break;
             case "return", "back", "go back": // Returns the player to the room where they were defeated
                 if (player.getCurrentRoomId().equals("pokecentre")) {
@@ -236,11 +261,11 @@ public class CommandParser {
             case "search", "find": // Searches the current room for Pokemon
                 currentRoom = rooms.get(player.getCurrentRoomId());
                 if (currentRoom == null) {
-                    System.out.println("You can't search here, the room does not exist.\n");
+                    System.out.println("You can't search here, the room does not exist.");
                     return;
                 }
                 if (currentRoom.getId().equals("pol")) {
-                    System.out.println("What are you searching for? Professor Oak has presented the three Pokemon to you! Choose one by typing its name.\n");
+                    System.out.println("What are you searching for? Professor Oak has presented the three Pokemon to you! Choose one by typing its name.");
                     return;
                 }
                 int pokeCount = 0;
@@ -250,7 +275,7 @@ public class CommandParser {
                     }
                 }
                 if(pokeCount == 0){
-                    System.out.println("There are either no pokemon in this room or you've found all the ones inside it!\n");
+                    System.out.println("There are either no pokemon in this room or you've found all the ones inside it!");
                     return;
                 }
                 int randomIndex = (int) (Math.random() * (pokeCount + 1));
@@ -261,7 +286,7 @@ public class CommandParser {
                     startCombat(currentFight);
                     
                 } else {
-                    System.out.println("You find nothing of interest... yet. Try searching again!\n");
+                    System.out.println("You find nothing of interest... yet. Try searching again!");
                 }
 
 
@@ -275,14 +300,14 @@ public class CommandParser {
                     }
                     Pokemon foundPokemon = currentRoom.get().get(0);
                     player.addPokemon(foundPokemon);
-                    System.out.println("You received a Charmander!\n");
+                    System.out.println("You received a Charmander!");
                     System.out.println(
                         foundPokemon.getName() + "\n" +
                         foundPokemon.getDescription() + "\n" +
                         "Health: " + foundPokemon.getHp() + "\n" +
                         "Attack: " + foundPokemon.getAtk() + "\n" +
                         "Defense: " + foundPokemon.getDef() + "\n" +
-                        "Speed: " + foundPokemon.getSpd() + "\n"
+                        "Speed: " + foundPokemon.getSpd()
                     );
                     currentRoom.removeItem(currentRoom.get().get(0)); // Remove Charmander
                     currentRoom.removeItem(currentRoom.get().get(0)); // Remove Squirtle
@@ -300,14 +325,14 @@ public class CommandParser {
                     }
                     Pokemon foundPokemon = currentRoom.get().get(1);
                     player.addPokemon(foundPokemon);
-                    System.out.println("You received a Squirtle!\n");
+                    System.out.println("You received a Squirtle!");
                     System.out.println(
                         foundPokemon.getName() + "\n" +
                         foundPokemon.getDescription() + "\n" +
                         "Health: " + foundPokemon.getHp() + "\n" +
                         "Attack: " + foundPokemon.getAtk() + "\n" +
                         "Defense: " + foundPokemon.getDef() + "\n" +
-                        "Speed: " + foundPokemon.getSpd() + "\n"
+                        "Speed: " + foundPokemon.getSpd()
                     );
                     currentRoom.removeItem(currentRoom.get().get(0)); // Remove Charmander
                     currentRoom.removeItem(currentRoom.get().get(0)); // Remove Squirtle
@@ -325,14 +350,14 @@ public class CommandParser {
                     }
                     Pokemon foundPokemon = currentRoom.get().get(2);
                     player.addPokemon(foundPokemon);
-                    System.out.println("You received a Bulbasaur!\n");
+                    System.out.println("You received a Bulbasaur!");
                     System.out.println(
                         foundPokemon.getName() + "\n" +
                         foundPokemon.getDescription() + "\n" +
                         "Health: " + foundPokemon.getHp() + "\n" +
                         "Attack: " + foundPokemon.getAtk() + "\n" +
                         "Defense: " + foundPokemon.getDef() + "\n" +
-                        "Speed: " + foundPokemon.getSpd() + "\n"
+                        "Speed: " + foundPokemon.getSpd()
                     );
                     currentRoom.removeItem(currentRoom.get().get(0)); // Remove Charmander
                     currentRoom.removeItem(currentRoom.get().get(0)); // Remove Squirtle
@@ -342,6 +367,7 @@ public class CommandParser {
                 }
                 break;
             default:
+                
                 System.out.println("Sorry, I don't understand that.");
                 break;
         }

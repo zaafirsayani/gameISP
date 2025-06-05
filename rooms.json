@@ -815,7 +815,43 @@
           ]
         }
       ]
+    },
+
+    "boss arena": {
+      "name": "Red's Arena",
+      "description": "You enter a large, booming stadium filled with jeering trainers and braodcasters. They've been expecting arrivals. A trainer sadly walks away from the stage, defeated by a taunting trainer, Red. You know about him. Talked about all across the island, Red is a formidable trainer that's known for challenging opponents and laughing in their face. What is he doing here?",
+      "dialogue": "Red: Hm? Who's this? You look like a trainer! Are you lost? Ha! I won't mind defeating you too! They say anyone who beats is world-renowned, but that's never going to happen. I challenge you to face my most powerful Pokemon! I send out Mewtwo!",
+      "exits": {
+        
+      },
+      "pokemons": [{
+        "name": "Mewtwo",
+        "description": "A genetically engineered Pokemon with unmatched psychic abilities.",
+        "hp": 201,
+        "atk": 170,
+        "def": 90,
+        "spd": 155,
+        "moves":[
+          {
+            "name": "Psychic",
+            "type": "Psychic"
+          },
+          {
+            "name": "Shadow Ball",
+            "type": "Ghost"
+          }
+        ]
+        
+      }
+        
+      ]
+      
+      
+      }
+      
     }
 
-  }
+    
+
+  
   
