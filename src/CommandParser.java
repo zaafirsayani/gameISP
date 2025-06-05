@@ -77,7 +77,7 @@ public class CommandParser {
                 default: 
                     System.out.println(
                         "WHAT WILL YOU DO?" + "\n" +
-                        "1. ATTACK [attack + MoveName (e.g. attack slash)]" + "\n" +
+                        "1. ATTACK [use + MoveName (e.g. attack slash)]" + "\n" +
                         "2. CHECK STATS [check]" + "\n" + 
                         "3. SWITCH POKEMON [switch -number-]" + "\n" + 
                         "4. CATCH [catch]"
@@ -177,11 +177,30 @@ public class CommandParser {
                 }
                 break;
             case "drop": // Drops (releases) a Pokemon from the player's inventory
+                if(player.getInventory().size() == 1){
+                    System.out.println("You can't get rid of your only Pokemon, silly! Catch some more!");
+                    return;
+                }
+                if(player.getInventory().size() < 1){
+                    System.out.println("You have no Pokemon to drop!");
+                    return;
+                }
                 if (words.length < 2) {
                     System.out.println("Drop what?");
                 } else {
                     String pokeName = words[1];
-                }
+                    for(Pokemon p : player.getInventory()){
+                    if (p.getName().equalsIgnoreCase(pokeName)) {
+                        player.removeItem(p);
+                        return;
+                    }
+                 } 
+                    System.out.println("You don't have that Pokemon.");
+                    return;
+                    }
+                    
+                    
+                
                 break;
             case "talk", "speak", "chat", "say", "dialogue": // Engages dialogue in the current room
                 currentRoom = rooms.get(player.getCurrentRoomId());
@@ -248,7 +267,7 @@ public class CommandParser {
                         return;
                     }
                     Pokemon foundPokemon = currentRoom.get().get(0);
-                    player.addItem(foundPokemon);
+                    player.addPokemon(foundPokemon);
                     System.out.println("You received a Charmander!");
                     System.out.println(
                         foundPokemon.getName() + "\n" +
@@ -273,7 +292,7 @@ public class CommandParser {
                         return;
                     }
                     Pokemon foundPokemon = currentRoom.get().get(1);
-                    player.addItem(foundPokemon);
+                    player.addPokemon(foundPokemon);
                     System.out.println("You received a Squirtle!");
                     System.out.println(
                         foundPokemon.getName() + "\n" +
@@ -298,7 +317,7 @@ public class CommandParser {
                         return;
                     }
                     Pokemon foundPokemon = currentRoom.get().get(2);
-                    player.addItem(foundPokemon);
+                    player.addPokemon(foundPokemon);
                     System.out.println("You received a Bulbasaur!");
                     System.out.println(
                         foundPokemon.getName() + "\n" +

@@ -54,6 +54,7 @@ public class Fight {
 
     public void startBattle(){
         System.out.println("A wild " + challenger.getName() + " appears!");
+        System.out.println("HP: " + challenger.getHp());
     }
 
     public void switchPokemon(){
@@ -85,16 +86,22 @@ public class Fight {
     public void attack(Pokemon attacker, Pokemon victim, Moves move){
 
         
-
-       victim.receiveDmg(attacker.getAtk());
-        System.out.println(attacker.getName() + " used " + move.getName() + " and dealt " + attacker.getAtk() + " damage!");
+        int enemyDamage = attacker.getAtk() - (victim.getDef() / 2);
+       
+        victim.receiveDmg(enemyDamage);
+        System.out.println(attacker.getName() + " used " + move.getName() + " and dealt " + enemyDamage + " damage!");
  
         if(victim.getHp() > 0){
+        System.out.println("REMAINING HP: " + victim.getHp());
         Moves enemyMove = Math.random() < 0.5 ? challenger.getMove1() : challenger.getMove2();
         System.out.println("The wild " + victim.getName() + " attacks!");
-       
-        playerCurrent.receiveDmg(victim.getAtk());
-        System.out.println(victim.getName() + " used " + enemyMove.getName() + " and dealt " + victim.getAtk() + " damage!");
+
+
+        
+        int activeDamage = victim.getAtk() - (attacker.getDef() / 2);
+        playerCurrent.receiveDmg(activeDamage);
+        System.out.println(victim.getName() + " used " + enemyMove.getName() + " and dealt " + activeDamage + " damage!");
+        
         }
         
         
@@ -106,9 +113,14 @@ public class Fight {
             System.out.println("You already have 3 Pokemon! You can't catch another!");
             return false;
         }
+        if(challenger.getHp() > (challenger.getMaxHp() * 0.5)){
+            System.out.println(challenger.getName() + "'s health is too high! It must be under 40% of its maximum!");
+            return false;
+        }
 
         
-        player.addItem(challenger);
+        player.addPokemon(challenger);
+        challenger.setHp(challenger.getMaxHp());
                     
         System.out.println("You found a " + challenger.getName() + "!");
         System.out.println(

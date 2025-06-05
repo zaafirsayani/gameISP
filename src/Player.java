@@ -18,7 +18,7 @@ public class Player {
         this.currentRoomId = roomId;
     }
 
-    public void addItem(Pokemon item) {
+    public void addPokemon(Pokemon item) {
         if(pokeparty.size() == 3){
             System.out.println("You are unable to collect any more Pokemon!");
         }
@@ -26,6 +26,8 @@ public class Player {
     }
 
     public void removeItem(Pokemon item) {
+        
+        System.out.println("You sent " + item.getName() + " away with a heartfelt goodbye.");
         pokeparty.remove(item);
     }
 
