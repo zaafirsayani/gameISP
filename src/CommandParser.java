@@ -23,6 +23,9 @@ public class CommandParser {
     }
 
     public void endCombat(){
+        if (currentFight.getChallenger().getHp() <= 0) {
+            currentRoom.get().remove(currentFight.getChallenger()); // Remove the defeated Pokemon from the room
+        }
         isCombat = false;
         currentFight = null;
         
@@ -67,12 +70,13 @@ public class CommandParser {
                             return;
                         }
                         currentFight.attack(currentFight.getActive(), currentFight.getChallenger(), selectedMove);
-                }
+                    }
                 break;
                 case "catch": // Attempts to catch the opponent's Pokemon
                     if(currentFight.attemptCatch()){
+                        currentRoom.get().remove(currentFight.getChallenger()); // Remove the caught Pokemon from the room
                         endCombat();
-                }
+                    }
                 break;
                 default: 
                     System.out.println(
@@ -193,7 +197,14 @@ public class CommandParser {
                 }
                 break;
             case "help", "help me", "commands", "what", "what can i do", "what do i say", "huh": // Displays a list of available commands
-                System.out.println("Available commands: go [direction], look, take [item], drop [item], inventory, help, talk");
+                System.out.println("Feeling lost? No worries! Here are some commands you can say to me.");
+                System.out.println("- \"go [direction]\" (e.g. go north, go south, go east, go west): to move in a direction. You can also just type the direction in one word.");
+                System.out.println("- \"look\" or \"l\" or \"where\": to look around the current room.");
+                System.out.println("- \"inventory\", \"i\" or \"inv\": to check your inventory (list of Pokemon you have).");
+                System.out.println("- \"drop [Pokemon name]\": to release a Pokemon from your inventory.");
+                System.out.println("- \"talk\", \"speak\", \"chat\", \"say\", or \"dialogue\": to engage in dialogue in the current room.");
+                System.out.println("Some other commands are only available in specific rooms or situations. You'll know when you can use them!");
+                System.out.println("Good luck on your journey!");
                 break;
             case "return", "back", "go back": // Returns the player to the room where they were defeated
                 if (player.getCurrentRoomId().equals("pokecentre")) {
@@ -227,12 +238,8 @@ public class CommandParser {
                 if (randomIndex < pokeCount) {
                     Pokemon foundPokemon = currentRoom.get().get(randomIndex);
 
-                    
-                
-                    currentRoom.removeItem(foundPokemon);
                     currentFight = new Fight(player, foundPokemon);
                     startCombat(currentFight);
-                    
                     
                 } else {
                     System.out.println("You find nothing of interest... yet. Try searching again!");

@@ -16,6 +16,14 @@ public class Game {
     public void start() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to the world of Pokemon!");
+        System.out.println("Here are some commands you can give me to get started.");
+        System.out.println("- \"go [direction]\" (e.g. go north, go south, go east, go west): move in a direction. You can also just type the direction in one word.");
+        System.out.println("- \"look\" or \"l\" or \"where\": look around the current room.");
+        System.out.println("- \"inventory\", \"i\" or \"inv\": check your inventory (list of Pokemon you have).");
+        System.out.println("- \"drop [Pokemon name]\": release a Pokemon from your inventory.");
+        System.out.println("- \"talk\", \"speak\", \"chat\", \"say\", or \"dialogue\": engage in dialogue in the current room.");
+        System.out.println("\"help\": show this list of commands again.");
+        System.out.println("Some other commands are only available in specific rooms or situations. You'll know when you can use them!");
         Room currentRoom = rooms.get(player.getCurrentRoomId());
         System.out.println(currentRoom.getLongDescription());
 
@@ -25,6 +33,5 @@ public class Game {
             commandParser.parse(input, player, rooms);
         }
 
-        
     }
 }
