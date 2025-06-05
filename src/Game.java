@@ -15,8 +15,8 @@ public class Game {
 
     public void start() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Welcome to the world of Pokemon!");
-        System.out.println("Here are some commands you can give me to get started.");
+        System.out.println("\nWelcome to the world of Pokemon!");
+        System.out.println("\nHere are some commands you can give me to get started.");
         System.out.println("- \"go [direction]\" (e.g. go north, go south, go east, go west): move in a direction. You can also just type the direction in one word.");
         System.out.println("- \"look\" or \"l\" or \"where\": look around the current room.");
         System.out.println("- \"inventory\", \"i\" or \"inv\": check your inventory (list of Pokemon you have).");

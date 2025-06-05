@@ -54,6 +54,7 @@ public class Room {
 
     public String getLongDescription() {
         StringBuilder sb = new StringBuilder();
+        sb.append("\n");
         sb.append(name).append("\n");
         sb.append("\n");
         sb.append(description).append("\n");

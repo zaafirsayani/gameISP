@@ -55,8 +55,8 @@ public class Fight {
     }
 
     public void startBattle(){
-        System.out.println("A wild " + challenger.getName() + " appears!");
-        System.out.println("HP: " + challenger.getHp());
+        System.out.println("\nA wild " + challenger.getName() + " appears!");
+        System.out.println("HP: " + challenger.getHp() + "\n");
     }
 
     public void switchPokemon(){
@@ -88,7 +88,7 @@ public class Fight {
     public void attack(Pokemon attacker, Pokemon victim, Moves move){
 
         
-        int enemyDamage = attacker.getAtk() - (victim.getDef() / 2);
+        int enemyDamage = Math.abs(attacker.getAtk() - (victim.getDef() / 2));
        
         victim.receiveDmg(enemyDamage);
         System.out.println(attacker.getName() + " used " + move.getName() + " and dealt " + enemyDamage + " damage!");
